@@ -17,6 +17,7 @@ namespace Project
             InitializeComponent();
             
         }
+
         //Add validation of first/last name using  MaskedTextBox
         //change email validation
         string path = @"C:\\Users\\alina\\OneDrive\\Робочий стіл\\Project C#\\Project\\Project\\InformationAboutUsers.json";
@@ -37,17 +38,17 @@ namespace Project
             }
             else
             {
-                if (CheckEmail(emailTextBox.Text, path))
+                if (User.CheckEmail(emailTextBox.Text, path))
                 {
                     MessageBox.Show("Користувач з такою поштовою адресою вже існує.");
                 }
                 else
                 {
                     var user = new User(emailTextBox.Text, passwordTextBox.Text, firstNameTextBox.Text, lastNameTextBox.Text);
-                    if (user.SaveUser(path))
+                    if (User.SaveUser(user,path))
                     {
                         Hide();
-                        var form = new SearchFlightsForm();
+                        var form = new SearchFlightsForm(user);
                         form.Show();
                     }
                     else
@@ -125,20 +126,6 @@ namespace Project
             {
                 passwordTextBox.ForeColor = Color.Black;
             }
-        }
-       
-        public bool CheckEmail(string email, string path)
-        {
-            string j = File.ReadAllText(path);
-            var users = JsonConvert.DeserializeObject<List<User>>(j);
-            foreach (var user in users)
-            {
-                if (user.Email == email)
-                {
-                    return true;
-                }
-            }
-            return false;
         }
     }
 }

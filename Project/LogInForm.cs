@@ -20,7 +20,8 @@ namespace Project
             InitializeComponent();
         }
         //Add function forgot password
-        
+        User curUser = new User();
+
         string path = @"C:\\Users\\alina\\OneDrive\\Робочий стіл\\Project C#\\Project\\Project\\InformationAboutUsers.json";
         private void label5_Click(object sender, EventArgs e)
         {
@@ -31,13 +32,11 @@ namespace Project
 
         private void logInButton_Click(object sender, EventArgs e)
         {
-            if (TryLoginUser(emailTextBox.Text, passwordTextBox.Text))
+            User curUser = User.LoginUser(emailTextBox.Text,passwordTextBox.Text, path);
+            if (curUser != null)
             {
-                User curUser = new User();
-                curUser.Email = emailTextBox.Text;
-                var profileForm = new UserProfile(curUser);
                 Hide();
-                var form = new SearchFlightsForm();
+                var form = new SearchFlightsForm(curUser);
                 form.Show();
             }
             else
@@ -78,25 +77,6 @@ namespace Project
             if (passwordTextBox.ForeColor == Color.Red)
             {
                 passwordTextBox.ForeColor = Color.Black;
-            }
-        }
-        public bool TryLoginUser(string email, string password)
-        {
-            try
-            {
-                string data = File.ReadAllText(path);
-                var users = JsonConvert.DeserializeObject<List<User>>(data);
-                var newUser = users.FirstOrDefault(user => user.Email == email);
-                if (newUser != null && newUser.Password == password)
-                {
-                    return true;
-                }
-                return false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Помилка.");
-                return false;
             }
         }
     }

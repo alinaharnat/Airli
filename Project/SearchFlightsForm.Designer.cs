@@ -31,7 +31,7 @@ namespace Project
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchFlightsForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -261,10 +261,10 @@ namespace Project
             this.panel1.Controls.Add(this.SearchButton);
             this.panel1.Controls.Add(this.toCityTextBox);
             this.panel1.Controls.Add(this.fromCityTextBox);
+            this.panel1.Controls.Add(this.menuStrip2);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.menuStrip2);
             this.panel1.Location = new System.Drawing.Point(43, 54);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1044, 192);
@@ -273,12 +273,13 @@ namespace Project
             // anywhenСheckBox
             // 
             this.anywhenСheckBox.AutoSize = true;
-            this.anywhenСheckBox.Location = new System.Drawing.Point(553, 52);
+            this.anywhenСheckBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.anywhenСheckBox.Location = new System.Drawing.Point(553, 16);
             this.anywhenСheckBox.Name = "anywhenСheckBox";
             this.anywhenСheckBox.Size = new System.Drawing.Size(114, 24);
             this.anywhenСheckBox.TabIndex = 9;
             this.anywhenСheckBox.Text = "Будь-коли";
-            this.anywhenСheckBox.UseVisualStyleBackColor = true;
+            this.anywhenСheckBox.UseVisualStyleBackColor = false;
             // 
             // datePicker
             // 
@@ -347,28 +348,29 @@ namespace Project
             // 
             // menuStrip2
             // 
+            this.menuStrip2.BackColor = System.Drawing.Color.White;
             this.menuStrip2.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip2.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip2.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SortButton});
-            this.menuStrip2.Location = new System.Drawing.Point(308, 43);
+            this.menuStrip2.Location = new System.Drawing.Point(308, 7);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(133, 33);
+            this.menuStrip2.Size = new System.Drawing.Size(121, 33);
             this.menuStrip2.TabIndex = 10;
             this.menuStrip2.Text = "menuStrip2";
             // 
             // SortButton
             // 
-            this.SortButton.BackColor = System.Drawing.Color.White;
+            this.SortButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SortButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sortPriceUp,
             this.sortPriceDown,
             this.numberOfSeatsUp,
             this.numberOtSeatsDown});
             this.SortButton.Name = "SortButton";
-            this.SortButton.Size = new System.Drawing.Size(125, 29);
-            this.SortButton.Text = "Сортування";
+            this.SortButton.Size = new System.Drawing.Size(113, 29);
+            this.SortButton.Text = "Сортувати";
             // 
             // sortPriceUp
             // 
@@ -413,14 +415,14 @@ namespace Project
             this.dataGridView.Location = new System.Drawing.Point(30, 252);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView.RowHeadersWidth = 62;
             this.dataGridView.RowTemplate.Height = 28;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -429,12 +431,13 @@ namespace Project
             // 
             // profileButton
             // 
-            this.profileButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.profileButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(210)))), ((int)(((byte)(240)))));
             this.profileButton.FlatAppearance.BorderSize = 0;
             this.profileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.profileButton.ForeColor = System.Drawing.Color.Black;
             this.profileButton.Location = new System.Drawing.Point(122, 0);
             this.profileButton.Name = "profileButton";
-            this.profileButton.Size = new System.Drawing.Size(110, 36);
+            this.profileButton.Size = new System.Drawing.Size(110, 33);
             this.profileButton.TabIndex = 8;
             this.profileButton.Text = "Профіль";
             this.profileButton.UseVisualStyleBackColor = false;
@@ -442,6 +445,7 @@ namespace Project
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(210)))), ((int)(((byte)(240)))));
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Location = new System.Drawing.Point(238, 0);
@@ -449,7 +453,7 @@ namespace Project
             this.button2.Size = new System.Drawing.Size(112, 33);
             this.button2.TabIndex = 9;
             this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // SearchFlightsForm
             // 
@@ -463,6 +467,7 @@ namespace Project
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MinimumSize = new System.Drawing.Size(1170, 647);
             this.Name = "SearchFlightsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.SearchFlightsForm_Load);

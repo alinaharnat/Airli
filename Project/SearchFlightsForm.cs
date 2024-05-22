@@ -17,9 +17,18 @@ namespace Project
 {
     public partial class SearchFlightsForm : Form
     {
+        //private User currentUser;
+        private User currentUser;
         public SearchFlightsForm()
         {
             InitializeComponent();
+            dataGridView.AutoGenerateColumns = true;
+        }
+        public SearchFlightsForm(User user)
+        {
+            currentUser = user;
+            InitializeComponent();
+            dataGridView.AutoGenerateColumns = true;
 
 
         }
@@ -27,6 +36,7 @@ namespace Project
         List<Flights> listFlights = new List<Flights>();
         private void SearchButton_Click(object sender, EventArgs e)
         {
+            dataGridView.Show();
             var from = fromCityTextBox.Text;
             var to = toCityTextBox.Text;
             var date = datePicker.Value.Date;
@@ -44,6 +54,7 @@ namespace Project
             }
             else
             {
+                dataGridView.Hide();
                 MessageBox.Show("Рейсів не знайдено.");
             }
             
@@ -61,22 +72,6 @@ namespace Project
             datePicker.CustomFormat = " ";
             datePicker.Format = DateTimePickerFormat.Custom;
         }
-        private void ConfigureDataGridView()
-        {
-            dataGridView.AutoGenerateColumns = false;
-
-            dataGridView.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Id" });
-            dataGridView.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "DepartureCity"});
-            dataGridView.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "DestinationCity" });
-            dataGridView.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "IntermediateLandingPoint" });
-            dataGridView.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "DateTime" });
-            dataGridView.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "FlightDuration" });
-            dataGridView.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Price" });
-            dataGridView.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Carrier" });
-            dataGridView.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "NumberOfAvailableSeats" });
-        }
-
-      
 
         private void sortPriceUp_Click(object sender, EventArgs e)
         {
@@ -109,7 +104,7 @@ namespace Project
         private void profileButton_Click(object sender, EventArgs e)
         {
             Hide();
-            var form = new UserProfile();
+            var form = new ProfileForm(currentUser);
             form.Show();
         }
     }

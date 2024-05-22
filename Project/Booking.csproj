@@ -56,6 +56,13 @@
     <Compile Include="LogInForm.Designer.cs">
       <DependentUpon>LogInForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Order.cs" />
+    <Compile Include="ProfileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProfileForm.Designer.cs">
+      <DependentUpon>ProfileForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="RegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,15 +78,12 @@
       <DependentUpon>SearchFlightsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
-    <Compile Include="UserProfile.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UserProfile.Designer.cs">
-      <DependentUpon>UserProfile.cs</DependentUpon>
-    </Compile>
     <Compile Include="Validation.cs" />
     <EmbeddedResource Include="LogInForm.resx">
       <DependentUpon>LogInForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProfileForm.resx">
+      <DependentUpon>ProfileForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegistrationForm.resx">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
@@ -95,9 +99,6 @@
     </Compile>
     <EmbeddedResource Include="SearchFlightsForm.resx">
       <DependentUpon>SearchFlightsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserProfile.resx">
-      <DependentUpon>UserProfile.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="AvaliableFlights.json" />
     <None Include="InformationAboutUsers.json" />

@@ -19,7 +19,7 @@ namespace Project
         private DateTime dateTime;
         private TimeSpan flightDuration;
         private int id;
-        private decimal price;
+        private double price;
         private string carrier;
         private int numberOfAvailableSeats;
 
@@ -28,10 +28,26 @@ namespace Project
         public string IntermediateLandingPoint { get; set; }
         public DateTime DateTime { get; set; }
         public int Id { get; set; }
-        public decimal Price { get; set; }
+        public double Price { get; set; }
         public string Carrier { get; set; }
         public TimeSpan FlightDuration { get; set; }
         public int NumberOfAvailableSeats { get; set; } 
+        public Flights()
+        {
+
+        }
+        public Flights(string depСity, string destСity, string interLandPoint, DateTime dTime, TimeSpan duration, int i, double p, string carr, int AvailableSeats)
+        {
+          this.departureСity = depСity;
+          this.destinationСity = destСity;
+          this.intermediateLandingPoint = interLandPoint;
+         this.dateTime = dTime;
+        this.flightDuration = duration;
+        this.id = i;
+        this.price = p;
+        this.carrier = carr;
+       this.NumberOfAvailableSeats = AvailableSeats;
+        }
 
         public static List<Flights> GetAvailableFlights(string path)
         {
@@ -49,12 +65,11 @@ namespace Project
                 {
                     if ((flight.DepartureCity.Equals(from, StringComparison.OrdinalIgnoreCase) || string.IsNullOrEmpty(from) )&&
                        ( flight.DestinationCity.Equals(to, StringComparison.OrdinalIgnoreCase) || string.IsNullOrEmpty(to)) &&
-                        (flight.DateTime.Date == date) &&( flight.NumberOfAvailableSeats > 0))
+                        (flight.DateTime.Date == date) && (flight.DateTime.Date >= DateTime.Now) && ( flight.NumberOfAvailableSeats > 0))
                     {
-                        if (flight.DateTime.Date >= DateTime.Now)
-                        {
+                       
                             res.Add(flight);
-                        }
+                        
                     }
                 }
             }
@@ -63,12 +78,9 @@ namespace Project
                 foreach (var flight in flights)
                 {
                     if ((flight.DepartureCity.Equals(from, StringComparison.OrdinalIgnoreCase) || string.IsNullOrEmpty(from) )&&
-                       ( flight.DestinationCity.Equals(to, StringComparison.OrdinalIgnoreCase) || string.IsNullOrEmpty(to)) && (flight.NumberOfAvailableSeats > 0))
+                       ( flight.DestinationCity.Equals(to, StringComparison.OrdinalIgnoreCase) || string.IsNullOrEmpty(to)) && (flight.DateTime.Date >= DateTime.Now)&&(flight.NumberOfAvailableSeats > 0))
                     {
-                        if (flight.DateTime.Date >= DateTime.Now)
-                        {
                             res.Add(flight);
-                        }
                     }
                 }
             }
