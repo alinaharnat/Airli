@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
+using Newtonsoft.Json;
+using System.IO;
+
 
 namespace Project
 {
@@ -16,105 +15,125 @@ namespace Project
         public RegistrationForm()
         {
             InitializeComponent();
+            
         }
+        //Add validation of first/last name using  MaskedTextBox
+        //change email validation
+        string path = @"C:\\Users\\alina\\OneDrive\\Робочий стіл\\Project C#\\Project\\Project\\InformationAboutUsers.json";
         private void registrationButton_Click(object sender, EventArgs e)
         {
-            try
+            if(lastNameTextBox.Text.Length < 2 || firstNameTextBox.Text.Length < 2)
             {
-                if (SearchEmail(emailTextBox.Text))
+                MessageBox.Show("Довжина прізвища та імені має бути щонайменше 2 символи.");
+            }else if(passwordTextBox.Text.Length < 8)
+            {
+                MessageBox.Show("Довжина пароля має бути не менше 8 символів.");
+            }else if (firstNameTextBox.Text.Length == 0 || lastNameTextBox.Text.Length == 0 || emailTextBox.Text.Length == 0 || passwordTextBox.Text.Length == 0)
+            {
+                MessageBox.Show("Заповніть всі обов'язкові поля.");
+            }else if (!Validation.ValidateEmail(emailTextBox.Text))
+            {
+                MessageBox.Show("Неправильний формат поштової адреси.");
+            }
+            else
+            {
+                if (CheckEmail(emailTextBox.Text, path))
                 {
                     MessageBox.Show("Користувач з такою поштовою адресою вже існує.");
                 }
                 else
                 {
-                    var user = new User(emailTextBox.Text, passwordTextBox.Text, lastNameTextBox.Text, firstNameTextBox.Text);
-                    string path = @"C:\Users\alina\OneDrive\Робочий стіл\Project C#\Project\Project\Users.xml";
-                    XDocument doc = XDocument.Load(path);
-                    XElement userElement = new XElement("user",
-                        new XElement("email", user.Email),
-                        new XElement("password", user.Password),
-                        new XElement("firstName", user.FirstName),
-                        new XElement("lastName", user.LastName)
-                    );
-                    doc.Root.Add(userElement);
-                    doc.Save(path);
-
-                    var form = new SearchFlightsForm();
-                    form.Show();
+                    var user = new User(emailTextBox.Text, passwordTextBox.Text, firstNameTextBox.Text, lastNameTextBox.Text);
+                    if (user.SaveUser(path))
+                    {
+                        Hide();
+                        var form = new SearchFlightsForm();
+                        form.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Помилка реєстрації.");
+                    }
                 }
-            }catch (Exception ex)
-            {
-                MessageBox.Show("Помилка.");
             }
+           
         }
         private void lastNameTextBox_Leave(object sender, EventArgs e)
         {
-            if (!ValidateLength(2, lastNameTextBox.Text))
+            if (!Validation.ValidateLength(2, lastNameTextBox.Text))
             {
                 lastNameTextBox.ForeColor = Color.Red;
                 MessageBox.Show("Довжина прізвища має бути не менше 2 символів.");
-                lastNameTextBox.Focus();
+               
+            }
+        }
+        private void lastNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (lastNameTextBox.ForeColor == Color.Red)
+            {
                 lastNameTextBox.ForeColor = Color.Black;
             }
         }
 
         private void firstNameTextBox_Leave(object sender, EventArgs e)
         {
-            if (!ValidateLength(2, firstNameTextBox.Text))
+            if (!Validation.ValidateLength(2, firstNameTextBox.Text))
             {
                 firstNameTextBox.ForeColor = Color.Red;
                 MessageBox.Show("Довжина імені має бути не менше 2 символів.");
-                firstNameTextBox.Focus();
+            }
+        }
+        private void firstNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (firstNameTextBox.ForeColor == Color.Red)
+            {
                 firstNameTextBox.ForeColor = Color.Black;
             }
         }
 
         private void emailTextBox_Leave(object sender, EventArgs e)
         {
-            if (!ValidateLength(5, emailTextBox.Text) || !Contains("@", emailTextBox.Text) || Contains(" ", emailTextBox.Text))
+        
+            if (!Validation.ValidateEmail(emailTextBox.Text))
             {
                 emailTextBox.ForeColor = Color.Red;
                 MessageBox.Show("Неправильний формат поштової адреси.");
-                emailTextBox.Focus();
+               
+            }
+        }
+        private void emailTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (emailTextBox.ForeColor == Color.Red)
+            {
                 emailTextBox.ForeColor = Color.Black;
             }
         }
 
         private void passwordTextBox_Leave(object sender, EventArgs e)
         {
-            if (!ValidateLength(8, passwordTextBox.Text))
+            if (!Validation.ValidateLength(8, passwordTextBox.Text))
             {
                 passwordTextBox.ForeColor = Color.Red;
                 MessageBox.Show("Довжина пароля має бути не менше 8 символів.");
-                passwordTextBox.Focus();
+              
+
+            }
+        }
+        private void passwordTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (passwordTextBox.ForeColor == Color.Red)
+            {
                 passwordTextBox.ForeColor = Color.Black;
-
             }
         }
-
-        public static bool ValidateLength(int length, string text)
+       
+        public bool CheckEmail(string email, string path)
         {
-            return text.Length >= length;
-        }
-        public bool Contains(string item, string text)
-        {
-            for (int i = 0; i < text.Length; i++)
+            string j = File.ReadAllText(path);
+            var users = JsonConvert.DeserializeObject<List<User>>(j);
+            foreach (var user in users)
             {
-                if (item.Equals(text[i].ToString()))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-        public bool SearchEmail(string email)
-        {
-            string path = @"C:\Users\alina\OneDrive\Робочий стіл\Project C#\Project\Project\Users.xml";
-            XDocument doc = XDocument.Load(path);
-            var emails = doc.Descendants("email");
-            foreach (var e in emails)
-            {
-                if (e.Value == email)
+                if (user.Email == email)
                 {
                     return true;
                 }

@@ -1,18 +1,17 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace Project
 {
-    public class Users
-    {
-        public List<User> UsersList = new List<User>();    
-        public Users() { }
-    }
+   //[Serializable]
     public class User
     {
         private string firstName;
@@ -21,6 +20,7 @@ namespace Project
         private string password;
         public string FirstName { get { return firstName; } set { firstName = value; } }
         public string LastName { get { return lastName; } set { lastName = value; } }
+      
         public string Email { get { return email; } set { email = value; } }
         public string Password { get { return password; } set { password = value; } }
         public User()
@@ -48,13 +48,28 @@ namespace Project
                 password = newPassword;
             }
         }
-        public void ChangeFirstName(string newFirstName)
-        {
-            firstName = newFirstName;
-        }
+       
         public void ChangeLastName(string newLastName) 
         {
             lastName = newLastName;
+        }
+        
+        public bool SaveUser(string path)
+        {
+            try
+            {
+                string jsonData = File.ReadAllText(path);
+                var users = JsonConvert.DeserializeObject<List<User>>(jsonData) ?? new List<User>();
+                users.Add(this);
+                string data = JsonConvert.SerializeObject(users);
+                File.WriteAllText(path, data);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false; 
+            }
         }
     }
 }
