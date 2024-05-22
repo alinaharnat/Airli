@@ -109,7 +109,7 @@ namespace Project
         private void profileButton_Click(object sender, EventArgs e)
         {
             Hide();
-            var form = new UserProfile();
+            var form = new ProfileForm();
             form.Show();
         }
     }

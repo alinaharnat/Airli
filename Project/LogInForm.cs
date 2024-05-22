@@ -35,7 +35,7 @@ namespace Project
             {
                 User curUser = new User();
                 curUser.Email = emailTextBox.Text;
-                var profileForm = new UserProfile(curUser);
+                var profileForm = new ProfileForm(curUser);
                 Hide();
                 var form = new SearchFlightsForm();
                 form.Show();

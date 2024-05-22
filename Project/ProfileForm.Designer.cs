@@ -1,6 +1,6 @@
 ﻿namespace Project
 {
-    partial class UserProfile
+    partial class ProfileForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,15 @@
         {
             this.SuspendLayout();
             // 
-            // UserProfile
+            // ProfileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "UserProfile";
-            this.Text = "UserProfile";
+            this.ClientSize = new System.Drawing.Size(1148, 591);
+            this.MinimumSize = new System.Drawing.Size(1170, 647);
+            this.Name = "ProfileForm";
+            this.Text = "ProfileForm";
+            this.Load += new System.EventHandler(this.ProfileForm_Load);
             this.ResumeLayout(false);
 
         }
