@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Project
@@ -16,9 +17,9 @@ namespace Project
             }
             try
             {
-
-                var newEmail = new System.Net.Mail.MailAddress(email);
-                return newEmail.Address == email;
+                var condition = @"^(?!.*\.\.)(?!\.)(?!.*\.$)(?!.*\.@)[^@\s]+@[^@\s]+\.[^@\s]+$";
+                var reg = new Regex(condition);
+                return reg.IsMatch(email);
             }
             catch (Exception ex)
             {

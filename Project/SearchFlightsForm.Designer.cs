@@ -1,4 +1,6 @@
-﻿namespace Project
+﻿using System;
+
+namespace Project
 {
     partial class SearchFlightsForm
     {
@@ -29,6 +31,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchFlightsForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,12 +53,8 @@
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.customizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.anywhenСheckBox = new System.Windows.Forms.CheckBox();
             this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.SearchButton = new System.Windows.Forms.Button();
             this.toCityTextBox = new System.Windows.Forms.TextBox();
@@ -63,9 +62,18 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.SortButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.sortPriceUp = new System.Windows.Forms.ToolStripMenuItem();
+            this.sortPriceDown = new System.Windows.Forms.ToolStripMenuItem();
+            this.numberOfSeatsUp = new System.Windows.Forms.ToolStripMenuItem();
+            this.numberOtSeatsDown = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.profileButton = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,9 +84,7 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.editToolStripMenuItem,
-            this.toolsToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.editToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1148, 33);
@@ -245,46 +251,12 @@
             this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(219, 34);
             this.selectAllToolStripMenuItem.Text = "Select &All";
             // 
-            // toolsToolStripMenuItem
-            // 
-            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.customizeToolStripMenuItem,
-            this.optionsToolStripMenuItem});
-            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(97, 29);
-            this.toolsToolStripMenuItem.Text = "Профіль";
-            // 
-            // customizeToolStripMenuItem
-            // 
-            this.customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
-            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(197, 34);
-            this.customizeToolStripMenuItem.Text = "&Customize";
-            // 
-            // optionsToolStripMenuItem
-            // 
-            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(197, 34);
-            this.optionsToolStripMenuItem.Text = "&Options";
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.BackColor = System.Drawing.Color.White;
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripSeparator5});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(112, 29);
-            this.helpToolStripMenuItem.Text = "Допомога";
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(87, 6);
-            // 
             // panel1
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.anywhenСheckBox);
             this.panel1.Controls.Add(this.datePicker);
             this.panel1.Controls.Add(this.SearchButton);
             this.panel1.Controls.Add(this.toCityTextBox);
@@ -292,10 +264,21 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.menuStrip2);
             this.panel1.Location = new System.Drawing.Point(43, 54);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1044, 192);
             this.panel1.TabIndex = 1;
+            // 
+            // anywhenСheckBox
+            // 
+            this.anywhenСheckBox.AutoSize = true;
+            this.anywhenСheckBox.Location = new System.Drawing.Point(553, 52);
+            this.anywhenСheckBox.Name = "anywhenСheckBox";
+            this.anywhenСheckBox.Size = new System.Drawing.Size(114, 24);
+            this.anywhenСheckBox.TabIndex = 9;
+            this.anywhenСheckBox.Text = "Будь-коли";
+            this.anywhenСheckBox.UseVisualStyleBackColor = true;
             // 
             // datePicker
             // 
@@ -303,6 +286,7 @@
             this.datePicker.Name = "datePicker";
             this.datePicker.Size = new System.Drawing.Size(200, 26);
             this.datePicker.TabIndex = 7;
+            this.datePicker.ValueChanged += new System.EventHandler(this.datePicker_ValueChanged);
             // 
             // SearchButton
             // 
@@ -361,19 +345,111 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "З";
             // 
+            // menuStrip2
+            // 
+            this.menuStrip2.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip2.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.menuStrip2.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SortButton});
+            this.menuStrip2.Location = new System.Drawing.Point(308, 43);
+            this.menuStrip2.Name = "menuStrip2";
+            this.menuStrip2.Size = new System.Drawing.Size(133, 33);
+            this.menuStrip2.TabIndex = 10;
+            this.menuStrip2.Text = "menuStrip2";
+            // 
+            // SortButton
+            // 
+            this.SortButton.BackColor = System.Drawing.Color.White;
+            this.SortButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sortPriceUp,
+            this.sortPriceDown,
+            this.numberOfSeatsUp,
+            this.numberOtSeatsDown});
+            this.SortButton.Name = "SortButton";
+            this.SortButton.Size = new System.Drawing.Size(125, 29);
+            this.SortButton.Text = "Сортування";
+            // 
+            // sortPriceUp
+            // 
+            this.sortPriceUp.Name = "sortPriceUp";
+            this.sortPriceUp.Size = new System.Drawing.Size(431, 34);
+            this.sortPriceUp.Text = "за збільшенням ціни";
+            this.sortPriceUp.Click += new System.EventHandler(this.sortPriceUp_Click);
+            // 
+            // sortPriceDown
+            // 
+            this.sortPriceDown.Name = "sortPriceDown";
+            this.sortPriceDown.Size = new System.Drawing.Size(431, 34);
+            this.sortPriceDown.Text = "за зменшенням ціни";
+            this.sortPriceDown.Click += new System.EventHandler(this.sortPriceDown_Click);
+            // 
+            // numberOfSeatsUp
+            // 
+            this.numberOfSeatsUp.Name = "numberOfSeatsUp";
+            this.numberOfSeatsUp.Size = new System.Drawing.Size(431, 34);
+            this.numberOfSeatsUp.Text = "за збільшенням кількості вільних місць";
+            this.numberOfSeatsUp.Click += new System.EventHandler(this.numberOfSeatsUp_Click);
+            // 
+            // numberOtSeatsDown
+            // 
+            this.numberOtSeatsDown.Name = "numberOtSeatsDown";
+            this.numberOtSeatsDown.Size = new System.Drawing.Size(431, 34);
+            this.numberOtSeatsDown.Text = "за зменшенням кількості вільних місць";
+            this.numberOtSeatsDown.Click += new System.EventHandler(this.numberOtSeatsDown_Click);
+            // 
             // dataGridView
             // 
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AllowUserToResizeColumns = false;
+            this.dataGridView.AllowUserToResizeRows = false;
             this.dataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
             this.dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridView.ColumnHeadersHeight = 34;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridView.Location = new System.Drawing.Point(43, 252);
+            this.dataGridView.Location = new System.Drawing.Point(30, 252);
             this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView.RowHeadersWidth = 62;
             this.dataGridView.RowTemplate.Height = 28;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(1044, 310);
+            this.dataGridView.Size = new System.Drawing.Size(1083, 327);
             this.dataGridView.TabIndex = 7;
+            // 
+            // profileButton
+            // 
+            this.profileButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.profileButton.FlatAppearance.BorderSize = 0;
+            this.profileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.profileButton.Location = new System.Drawing.Point(122, 0);
+            this.profileButton.Name = "profileButton";
+            this.profileButton.Size = new System.Drawing.Size(110, 36);
+            this.profileButton.TabIndex = 8;
+            this.profileButton.Text = "Профіль";
+            this.profileButton.UseVisualStyleBackColor = false;
+            this.profileButton.Click += new System.EventHandler(this.profileButton_Click);
+            // 
+            // button2
+            // 
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(238, 0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(112, 33);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // SearchFlightsForm
             // 
@@ -381,16 +457,21 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1148, 591);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.profileButton);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "SearchFlightsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.SearchFlightsForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.menuStrip2.ResumeLayout(false);
+            this.menuStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -420,11 +501,6 @@
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem customizeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox toCityTextBox;
         private System.Windows.Forms.TextBox fromCityTextBox;
@@ -434,5 +510,14 @@
         private System.Windows.Forms.Button SearchButton;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.DateTimePicker datePicker;
+        private System.Windows.Forms.CheckBox anywhenСheckBox;
+        private System.Windows.Forms.MenuStrip menuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem SortButton;
+        private System.Windows.Forms.ToolStripMenuItem sortPriceUp;
+        private System.Windows.Forms.ToolStripMenuItem sortPriceDown;
+        private System.Windows.Forms.ToolStripMenuItem numberOfSeatsUp;
+        private System.Windows.Forms.ToolStripMenuItem numberOtSeatsDown;
+        private System.Windows.Forms.Button profileButton;
+        private System.Windows.Forms.Button button2;
     }
 }
