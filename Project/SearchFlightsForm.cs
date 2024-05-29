@@ -22,7 +22,7 @@ namespace Project
         public SearchFlightsForm()
         {
             InitializeComponent();
-            
+
         }
         public SearchFlightsForm(User user)
         {
@@ -42,12 +42,13 @@ namespace Project
             var date = datePicker.Value.Date;
             if (!anywhenСheckBox.Checked)
             {
-                listFlights = Flights.SearchAvailableFlights(from, to, date, false,path);
-            }else if (anywhenСheckBox.Checked)
+                listFlights = Flights.SearchAvailableFlights(from, to, date, false, path);
+            }
+            else if (anywhenСheckBox.Checked)
             {
                 listFlights = Flights.SearchAvailableFlights(from, to, date, true, path);
             }
-            if(listFlights.Count != 0)
+            if (listFlights.Count != 0)
             {
                 dataGridView.DataSource = listFlights;
             }
@@ -56,14 +57,14 @@ namespace Project
                 dataGridView.Hide();
                 MessageBox.Show("Рейсів не знайдено.");
             }
-            
+
         }
 
         private void datePicker_ValueChanged(object sender, EventArgs e)
         {
 
             datePicker.CustomFormat = "dd-MM-yyyy";
-           
+
         }
 
         private void SearchFlightsForm_Load(object sender, EventArgs e)
@@ -106,8 +107,8 @@ namespace Project
             var form = new ProfileForm(currentUser);
             form.Show();
         }
-       
-       
+
+
 
         private void dataGridView_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
@@ -115,7 +116,7 @@ namespace Project
             {
                 DataGridViewRow selectedRow = dataGridView.Rows[e.RowIndex];
                 var selectedIteam = (Flights)selectedRow.DataBoundItem;
-                var form = new BuyTicketForm(selectedIteam,currentUser);
+                var form = new BuyTicketForm(selectedIteam, currentUser);
                 form.Show();
             }
         }

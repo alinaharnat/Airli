@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Windows.Forms;
 
 namespace Project
 {
@@ -396,13 +397,15 @@ namespace Project
             this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.AllowUserToResizeColumns = false;
             this.dataGridView.AllowUserToResizeRows = false;
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.dataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
             this.dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridView.ColumnHeadersHeight = 34;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridView.Location = new System.Drawing.Point(30, 252);
+            this.dataGridView.Location = new System.Drawing.Point(43, 271);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -416,9 +419,10 @@ namespace Project
             this.dataGridView.RowHeadersWidth = 62;
             this.dataGridView.RowTemplate.Height = 28;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(1083, 327);
+            this.dataGridView.Size = new System.Drawing.Size(1044, 281);
             this.dataGridView.TabIndex = 7;
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick_1);
+            
             // 
             // profileButton
             // 
@@ -427,7 +431,7 @@ namespace Project
             this.profileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.profileButton.Location = new System.Drawing.Point(122, 0);
             this.profileButton.Name = "profileButton";
-            this.profileButton.Size = new System.Drawing.Size(110, 36);
+            this.profileButton.Size = new System.Drawing.Size(110, 33);
             this.profileButton.TabIndex = 8;
             this.profileButton.Text = "Профіль";
             this.profileButton.UseVisualStyleBackColor = false;
@@ -513,5 +517,14 @@ namespace Project
         private System.Windows.Forms.ToolStripMenuItem numberOtSeatsDown;
         private System.Windows.Forms.Button profileButton;
         private System.Windows.Forms.Button button2;
+        //private DataGridViewTextBoxColumn DepartureCity;
+        //private DataGridViewTextBoxColumn DestinationCity;
+        //private DataGridViewTextBoxColumn IntermediateLandingPoint;
+        //private DataGridViewTextBoxColumn DateTime;
+        //private DataGridViewTextBoxColumn Id;
+        //private DataGridViewTextBoxColumn FlightDuration;
+        //private DataGridViewTextBoxColumn Price;
+        //private DataGridViewTextBoxColumn Carrier;
+        //private DataGridViewTextBoxColumn NumberOfAvailableSeats;
     }
 }

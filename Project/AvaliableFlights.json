@@ -8,7 +8,10 @@
     "flightDuration": "02:00:00",
     "price": 100,
     "carrier": "Airline A",
-    "numberOfAvailableSeats": 50
+    "numberOfAvailableSeats": 55,
+    "seatsEconom": 10,
+    "seatsBuisiness": 30,
+    "seatsFirst": 15
   },
   {
     "id": 2,
@@ -19,7 +22,10 @@
     "flightDuration": "01:30:00",
     "price": 120,
     "carrier": "Airline B",
-    "numberOfAvailableSeats": 30
+    "numberOfAvailableSeats": 28,
+    "seatsEconom": 10,
+    "seatsBuisiness": 3,
+    "seatsFirst": 15
   },
   {
     "id": 3,
@@ -30,19 +36,12 @@
     "flightDuration": "01:30:00",
     "price": 150,
     "carrier": "Airline C",
-    "numberOfAvailableSeats": 5
+    "numberOfAvailableSeats": 18,
+    "seatsEconom": 10,
+    "seatsBuisiness": 3,
+    "seatsFirst": 5
   },
-  {
-    "id": 1,
-    "departureCity": "Харків",
-    "destinationCity": "Київ",
-    "intermediateLandingPoint": "-",
-    "dateTime": "2024-05-26T10:00:00",
-    "flightDuration": "02:00:00",
-    "price": 500,
-    "carrier": "Airline A",
-    "numberOfAvailableSeats": 50
-  },
+
   {
     "id": 2,
     "departureCity": "Одеса",
@@ -52,7 +51,10 @@
     "flightDuration": "01:30:00",
     "price": 120,
     "carrier": "Airline B",
-    "numberOfAvailableSeats": 30
+    "numberOfAvailableSeats": 45,
+    "seatsEconom": 10,
+    "seatsBuisiness": 30,
+    "seatsFirst": 15
   },
   {
     "id": 3,
@@ -63,7 +65,10 @@
     "flightDuration": "01:30:00",
     "price": 30,
     "carrier": "Airline C",
-    "numberOfAvailableSeats": 40
+    "numberOfAvailableSeats": 54,
+    "seatsEconom": 27,
+    "seatsBuisiness": 12,
+    "seatsFirst": 15
   },
   {
     "id": 11,
@@ -74,7 +79,10 @@
     "flightDuration": "01:30:00",
     "price": 30,
     "carrier": "Airline C",
-    "numberOfAvailableSeats": 160
+    "numberOfAvailableSeats": 145,
+    "seatsEconom": 100,
+    "seatsBuisiness": 30,
+    "seatsFirst": 15
   },
   {
     "id": 10,
@@ -85,7 +93,10 @@
     "flightDuration": "01:30:00",
     "price": 30,
     "carrier": "Airline C",
-    "numberOfAvailableSeats": 40
+    "numberOfAvailableSeats": 45,
+    "seatsEconom": 10,
+    "seatsBuisiness": 30,
+    "seatsFirst": 15
   },
   {
     "id": 15,
@@ -96,7 +107,10 @@
     "flightDuration": "01:30:00",
     "price": 30,
     "carrier": "Airline C",
-    "numberOfAvailableSeats": 40
+    "numberOfAvailableSeats": 62,
+    "seatsEconom": 52,
+    "seatsBuisiness": 0,
+    "seatsFirst": 10
   },
   {
     "id": 3,
@@ -107,6 +121,9 @@
     "flightDuration": "01:30:00",
     "price": 30,
     "carrier": "Airline C",
-    "numberOfAvailableSeats": 40
+    "numberOfAvailableSeats": 45,
+    "seatsEconom": 10,
+    "seatsBuisiness": 30,
+    "seatsFirst": 15
   }
 ]
