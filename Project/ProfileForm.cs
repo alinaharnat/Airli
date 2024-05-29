@@ -70,5 +70,15 @@ namespace Project
             var form = new SearchFlightsForm(currentUser);
             form.Show();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void ShowHistoryButton_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = currentUser.HistoryOfOrders;
+        }
     }
 }

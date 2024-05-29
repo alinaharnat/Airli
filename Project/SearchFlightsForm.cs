@@ -22,7 +22,7 @@ namespace Project
         public SearchFlightsForm()
         {
             InitializeComponent();
-            dataGridView.AutoGenerateColumns = true;
+            
         }
         public SearchFlightsForm(User user)
         {
@@ -49,7 +49,6 @@ namespace Project
             }
             if(listFlights.Count != 0)
             {
-                listFlights = listFlights.OrderBy(x => x.DateTime).ToList();
                 dataGridView.DataSource = listFlights;
             }
             else
@@ -106,6 +105,19 @@ namespace Project
             Hide();
             var form = new ProfileForm(currentUser);
             form.Show();
+        }
+       
+       
+
+        private void dataGridView_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = dataGridView.Rows[e.RowIndex];
+                var selectedIteam = (Flights)selectedRow.DataBoundItem;
+                var form = new BuyTicketForm(selectedIteam,currentUser);
+                form.Show();
+            }
         }
     }
 }
