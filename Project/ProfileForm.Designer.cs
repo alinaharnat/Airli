@@ -42,10 +42,12 @@ namespace Project
             this.returnButton = new System.Windows.Forms.Button();
             this.ShowHistoryButton = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.destinationCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // curUserLastName
@@ -113,7 +115,7 @@ namespace Project
             this.panel1.Controls.Add(this.curUserPassword);
             this.panel1.Controls.Add(this.curUserLastName);
             this.panel1.Controls.Add(this.curUserEmail);
-            this.panel1.Location = new System.Drawing.Point(376, 55);
+            this.panel1.Location = new System.Drawing.Point(24, 61);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(386, 509);
             this.panel1.TabIndex = 6;
@@ -133,7 +135,7 @@ namespace Project
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(137, 67);
+            this.button1.Location = new System.Drawing.Point(100, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(197, 28);
             this.button1.TabIndex = 7;
@@ -154,7 +156,7 @@ namespace Project
             this.ShowHistoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ShowHistoryButton.FlatAppearance.BorderSize = 0;
             this.ShowHistoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ShowHistoryButton.Location = new System.Drawing.Point(863, 61);
+            this.ShowHistoryButton.Location = new System.Drawing.Point(431, 293);
             this.ShowHistoryButton.Name = "ShowHistoryButton";
             this.ShowHistoryButton.Size = new System.Drawing.Size(197, 40);
             this.ShowHistoryButton.TabIndex = 9;
@@ -162,20 +164,40 @@ namespace Project
             this.ShowHistoryButton.UseVisualStyleBackColor = false;
             this.ShowHistoryButton.Click += new System.EventHandler(this.ShowHistoryButton_Click);
             // 
-            // dataGridView1
+            // dataGridView
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(779, 114);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(357, 450);
-            this.dataGridView1.TabIndex = 10;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-           
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.destinationCity,
+            this.totalPrice});
+            this.dataGridView.Location = new System.Drawing.Point(431, 61);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
+            this.dataGridView.RowHeadersWidth = 62;
+            this.dataGridView.RowTemplate.Height = 28;
+            this.dataGridView.Size = new System.Drawing.Size(687, 215);
+            this.dataGridView.TabIndex = 10;
+            this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // destinationCity
+            // 
+            this.destinationCity.DataPropertyName = "infoOrder";
+            this.destinationCity.HeaderText = "Інформація про замовлення";
+            this.destinationCity.MinimumWidth = 8;
+            this.destinationCity.Name = "destinationCity";
+            this.destinationCity.ReadOnly = true;
+            this.destinationCity.Width = 150;
+            // 
+            // totalPrice
+            // 
+            this.totalPrice.DataPropertyName = "TotalPrice";
+            this.totalPrice.HeaderText = "Загальна вартість";
+            this.totalPrice.MinimumWidth = 8;
+            this.totalPrice.Name = "totalPrice";
+            this.totalPrice.ReadOnly = true;
+            this.totalPrice.Width = 150;
             // 
             // ProfileForm
             // 
@@ -183,7 +205,7 @@ namespace Project
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1148, 591);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.ShowHistoryButton);
             this.Controls.Add(this.returnButton);
             this.Controls.Add(this.button1);
@@ -194,7 +216,7 @@ namespace Project
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -212,6 +234,8 @@ namespace Project
         private System.Windows.Forms.Button returnButton;
         private System.Windows.Forms.Button ShowHistoryButton;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView;
+        private DataGridViewTextBoxColumn destinationCity;
+        private DataGridViewTextBoxColumn totalPrice;
     }
 }

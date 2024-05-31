@@ -23,7 +23,7 @@ namespace Project
         string path = @"C:\\Users\\alina\\OneDrive\\Робочий стіл\\Project C#\\Project\\Project\\InformationAboutUsers.json";
         private void registrationButton_Click(object sender, EventArgs e)
         {
-            if(lastNameTextBox.Text.Length < 2 || firstNameTextBox.Text.Length < 2)
+            if(!Validation.ValidateName(firstNameTextBox.Text,2) || !Validation.ValidateName(lastNameTextBox.Text,2))
             {
                 MessageBox.Show("Довжина прізвища та імені має бути щонайменше 2 символи.");
             }else if(passwordTextBox.Text.Length < 8)
@@ -61,7 +61,7 @@ namespace Project
         }
         private void lastNameTextBox_Leave(object sender, EventArgs e)
         {
-            if (!Validation.ValidateLength(2, lastNameTextBox.Text))
+            if (!Validation.ValidateName(lastNameTextBox.Text,2))
             {
                 lastNameTextBox.ForeColor = Color.Red;
                 MessageBox.Show("Довжина прізвища має бути не менше 2 символів.");
@@ -78,7 +78,7 @@ namespace Project
 
         private void firstNameTextBox_Leave(object sender, EventArgs e)
         {
-            if (!Validation.ValidateLength(2, firstNameTextBox.Text))
+            if (!Validation.ValidateName(firstNameTextBox.Text,2))
             {
                 firstNameTextBox.ForeColor = Color.Red;
                 MessageBox.Show("Довжина імені має бути не менше 2 символів.");

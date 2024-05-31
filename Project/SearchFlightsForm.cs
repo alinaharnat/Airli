@@ -22,13 +22,14 @@ namespace Project
         public SearchFlightsForm()
         {
             InitializeComponent();
+            dataGridView.AutoGenerateColumns = false;
 
         }
         public SearchFlightsForm(User user)
         {
             currentUser = user;
             InitializeComponent();
-            dataGridView.AutoGenerateColumns = true;
+            dataGridView.AutoGenerateColumns = false;
 
 
         }
@@ -40,14 +41,19 @@ namespace Project
             var from = fromCityTextBox.Text;
             var to = toCityTextBox.Text;
             var date = datePicker.Value.Date;
+           
+            //change realisation
+            
             if (!anywhenСheckBox.Checked)
             {
-                listFlights = Flights.SearchAvailableFlights(from, to, date, false, path);
+                
+                listFlights = Flights.SearchAvailableFlights(from, to, date, false,  path);
             }
             else if (anywhenСheckBox.Checked)
             {
                 listFlights = Flights.SearchAvailableFlights(from, to, date, true, path);
             }
+           
             if (listFlights.Count != 0)
             {
                 dataGridView.DataSource = listFlights;
@@ -71,6 +77,7 @@ namespace Project
         {
             datePicker.CustomFormat = " ";
             datePicker.Format = DateTimePickerFormat.Custom;
+            dataGridView.Hide();
         }
 
         private void sortPriceUp_Click(object sender, EventArgs e)
@@ -116,6 +123,7 @@ namespace Project
             {
                 DataGridViewRow selectedRow = dataGridView.Rows[e.RowIndex];
                 var selectedIteam = (Flights)selectedRow.DataBoundItem;
+                this.Hide();
                 var form = new BuyTicketForm(selectedIteam, currentUser);
                 form.Show();
             }

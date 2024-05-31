@@ -27,12 +27,16 @@ namespace Project
             this.curFlight = curFlight;
             this.curUser = curUser;
         }
-
+        string path = @"C:\Users\alina\OneDrive\Робочий стіл\Project C#\Project\Project\AvaliableFlights.json";
+        string pathUser = @"C:\Users\alina\OneDrive\Робочий стіл\Project C#\Project\Project\InformationAboutUsers.json";
         private void BuyTichetForm_Load(object sender, EventArgs e)
         {
             curFlightInfo.Text = curFlight.GetInfoAboutFlight();
             handBaggageTextBox.Hide();
             registBaggageTextBox.Hide();
+            messageLabel.Text = "";
+
+
         }
 
         private void BuyButton_Click(object sender, EventArgs e)
@@ -48,8 +52,16 @@ namespace Project
             else
             {
                 var seats = Convert.ToInt32(numSeatsTextBox.Text);
-                var order = new Order(curFlight);
-                order.MakeNewOrder(CurUser,seats);
+                var numHB = Convert.ToInt32(numSeatsTextBox.Text);
+                var numRB = Convert.ToInt32(numSeatsTextBox.Text);
+                var order = new Order(curUser,curFlight,seats,GetCheckedSeatType(),numHB,numRB);
+                Flights.ChangeFlightInformation(curFlight,path);
+                User.ChangeHistory(curUser, pathUser);
+                BuyPanel.Hide();
+                messageLabel.Text = $"Замовлення успішно сформовано!\nЗагальна вартість замовлення:{order.TotalPrice}";
+
+
+
             }
         }
 

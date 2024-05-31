@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using System.Text.Json;
 using System.IO;
 
 namespace Project
@@ -17,8 +18,9 @@ namespace Project
         private string lastName;
         private string email;
         private string password;
-        public List<string> HistoryOfOrders;
-        private int bonus;
+        public List<Order> HistoryOfOrders = new List<Order>();
+        public List<Order> unpaidUserOrders = new List<Order>();
+        //private int bonus;
         public string FirstName { get { return firstName; } set { firstName = value; } }
         public string LastName { get { return lastName; } set { lastName = value; } }
       
@@ -107,20 +109,40 @@ namespace Project
         }
         public static bool ChangeUserInformation(User curUser,string email, string lastName, string firstName, string password, string path)
         {
-            var users = GetData(path);
-            for(int i = 0; i < users.Count; i++)
+            if(Validation.ValidateName(firstName,2) || Validation.ValidateName(lastName,2) || Validation.ValidateLength(8, password)) 
             {
-                if (users[i].Email.Equals(email))
+                var users = GetData(path);
+                for (int i = 0; i < users.Count; i++)
                 {
-                    var newUser = new User(email, password, lastName, firstName);
-                    users[i] = newUser;
-                    curUser = newUser;
-                    string data = JsonConvert.SerializeObject(users);
-                    File.WriteAllText(path, data);
-                    return true;
+                    if (users[i].Email.Equals(email))
+                    {
+                        var newUser = new User(email, password, lastName, firstName);
+                        users[i] = newUser;
+                        curUser = newUser;
+                        string data = JsonConvert.SerializeObject(users);
+                        File.WriteAllText(path, data);
+                        return true;
+                    }
                 }
             }
             return false;
+        }
+        public static void ChangeHistory(User curUser,string path)
+        {
+           
+                var users = GetData(path);
+                for (int i = 0; i < users.Count; i++)
+                {
+                    if (users[i].Email == curUser.Email)
+                    {
+                        
+                        users[i] = curUser;
+                        string data = JsonConvert.SerializeObject(users);
+                        File.WriteAllText(path, data);
+                      
+                    }
+                }
+
         }
     }
 }

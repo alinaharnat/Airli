@@ -96,6 +96,7 @@ namespace Project
                     }
                 }
             }
+           
             return res;
         }
         public static List<Flights> GetData(string path)
@@ -118,12 +119,62 @@ namespace Project
                     }
                 }
             }
+        public static bool SaveFlight(Flights flight                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          , string path)
+        {
+            try
+            {
+                string jsonData = File.ReadAllText(path);
+                var flights = JsonConvert.DeserializeObject<List<Flights>>(jsonData);
+                flights.Add(flight);
+                string data = JsonConvert.SerializeObject(flights);
+                File.WriteAllText(path, data);
+
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
-        //public static void AddFlight()
-        //{
-        //    var res = new List<Flights>();
+        
 
-        //}
 
+        public static bool ChangeFlightInformation(Flights updatedFlight, string path)
+        {
+            var flights = GetData(path);
+            for (int i = 0; i < flights.Count; i++)
+            {
+                if (flights[i].Id == updatedFlight.Id)
+                {
+
+                    flights[i] = updatedFlight;
+                    string data = JsonConvert.SerializeObject(flights);
+                    File.WriteAllText(path, data);
+                    return true;
+                }
+            }
+            return false;
+        }
+        public static void RemoveFlightsWithInterLandPoint(List<Flights> flights)
+        {
+            foreach (var f in flights)
+            {
+                if (f.IntermediateLandingPoint != "-")
+                {
+                    flights.Remove(f);
+                }
+            }
+          
+        }
     }
+   
+    //public static void AddFlight()
+    //{
+    //    var res = new List<Flights>();
+
+    //}
+    //
+   
+}

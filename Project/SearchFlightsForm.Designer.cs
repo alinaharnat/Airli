@@ -32,8 +32,11 @@ namespace Project
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            System.Windows.Forms.MenuStrip menuStrip1;
+            System.Windows.Forms.Panel panel1;
+            System.Windows.Forms.Button profileButton;
+            System.Windows.Forms.Button button2;
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,7 +57,6 @@ namespace Project
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.anywhenСheckBox = new System.Windows.Forms.CheckBox();
             this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.SearchButton = new System.Windows.Forms.Button();
@@ -70,27 +72,37 @@ namespace Project
             this.numberOfSeatsUp = new System.Windows.Forms.ToolStripMenuItem();
             this.numberOtSeatsDown = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.profileButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.menuStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.departureCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.destinationCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.intermediateLandingPoint = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.flightDuration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numberOfAvailableSeats = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            menuStrip1 = new System.Windows.Forms.MenuStrip();
+            panel1 = new System.Windows.Forms.Panel();
+            profileButton = new System.Windows.Forms.Button();
+            button2 = new System.Windows.Forms.Button();
+            menuStrip1.SuspendLayout();
+            panel1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.White;
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            menuStrip1.BackColor = System.Drawing.Color.White;
+            menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1148, 33);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            menuStrip1.Location = new System.Drawing.Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new System.Drawing.Size(1148, 36);
+            menuStrip1.TabIndex = 0;
+            menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
@@ -106,7 +118,7 @@ namespace Project
             this.toolStripSeparator2,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(54, 29);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(54, 30);
             this.fileToolStripMenuItem.Text = "&File";
             // 
             // newToolStripMenuItem
@@ -187,7 +199,7 @@ namespace Project
             this.toolStripSeparator4,
             this.selectAllToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(58, 29);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(58, 30);
             this.editToolStripMenuItem.Text = "&Edit";
             // 
             // undoToolStripMenuItem
@@ -246,22 +258,22 @@ namespace Project
             // 
             // panel1
             // 
-            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.anywhenСheckBox);
-            this.panel1.Controls.Add(this.datePicker);
-            this.panel1.Controls.Add(this.SearchButton);
-            this.panel1.Controls.Add(this.toCityTextBox);
-            this.panel1.Controls.Add(this.fromCityTextBox);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.menuStrip2);
-            this.panel1.Location = new System.Drawing.Point(43, 54);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1044, 192);
-            this.panel1.TabIndex = 1;
+            panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            panel1.BackColor = System.Drawing.Color.White;
+            panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            panel1.Controls.Add(this.anywhenСheckBox);
+            panel1.Controls.Add(this.datePicker);
+            panel1.Controls.Add(this.SearchButton);
+            panel1.Controls.Add(this.toCityTextBox);
+            panel1.Controls.Add(this.fromCityTextBox);
+            panel1.Controls.Add(this.label3);
+            panel1.Controls.Add(this.label2);
+            panel1.Controls.Add(this.label1);
+            panel1.Controls.Add(this.menuStrip2);
+            panel1.Location = new System.Drawing.Point(43, 54);
+            panel1.Name = "panel1";
+            panel1.Size = new System.Drawing.Size(1044, 192);
+            panel1.TabIndex = 1;
             // 
             // anywhenСheckBox
             // 
@@ -325,9 +337,9 @@ namespace Project
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(304, 102);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 20);
+            this.label2.Size = new System.Drawing.Size(30, 20);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Куди";
+            this.label2.Text = "До";
             // 
             // label1
             // 
@@ -347,7 +359,7 @@ namespace Project
             this.SortButton});
             this.menuStrip2.Location = new System.Drawing.Point(308, 43);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(133, 33);
+            this.menuStrip2.Size = new System.Drawing.Size(136, 36);
             this.menuStrip2.TabIndex = 10;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -360,7 +372,7 @@ namespace Project
             this.numberOfSeatsUp,
             this.numberOtSeatsDown});
             this.SortButton.Name = "SortButton";
-            this.SortButton.Size = new System.Drawing.Size(125, 29);
+            this.SortButton.Size = new System.Drawing.Size(125, 30);
             this.SortButton.Text = "Сортування";
             // 
             // sortPriceUp
@@ -391,6 +403,30 @@ namespace Project
             this.numberOtSeatsDown.Text = "за зменшенням кількості вільних місць";
             this.numberOtSeatsDown.Click += new System.EventHandler(this.numberOtSeatsDown_Click);
             // 
+            // profileButton
+            // 
+            profileButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            profileButton.FlatAppearance.BorderSize = 0;
+            profileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            profileButton.Location = new System.Drawing.Point(122, 0);
+            profileButton.Name = "profileButton";
+            profileButton.Size = new System.Drawing.Size(110, 33);
+            profileButton.TabIndex = 8;
+            profileButton.Text = "Профіль";
+            profileButton.UseVisualStyleBackColor = false;
+            profileButton.Click += new System.EventHandler(this.profileButton_Click);
+            // 
+            // button2
+            // 
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            button2.Location = new System.Drawing.Point(238, 0);
+            button2.Name = "button2";
+            button2.Size = new System.Drawing.Size(112, 33);
+            button2.TabIndex = 9;
+            button2.Text = "button2";
+            button2.UseVisualStyleBackColor = true;
+            // 
             // dataGridView
             // 
             this.dataGridView.AllowUserToAddRows = false;
@@ -398,55 +434,111 @@ namespace Project
             this.dataGridView.AllowUserToResizeColumns = false;
             this.dataGridView.AllowUserToResizeRows = false;
             this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.dataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
             this.dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridView.ColumnHeadersHeight = 34;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.departureCity,
+            this.destinationCity,
+            this.intermediateLandingPoint,
+            this.dateTime,
+            this.flightDuration,
+            this.id,
+            this.price,
+            this.numberOfAvailableSeats});
             this.dataGridView.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridView.Location = new System.Drawing.Point(43, 271);
+            this.dataGridView.Location = new System.Drawing.Point(43, 280);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView.RowHeadersWidth = 62;
             this.dataGridView.RowTemplate.Height = 28;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(1044, 281);
             this.dataGridView.TabIndex = 7;
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick_1);
-            
             // 
-            // profileButton
+            // departureCity
             // 
-            this.profileButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.profileButton.FlatAppearance.BorderSize = 0;
-            this.profileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.profileButton.Location = new System.Drawing.Point(122, 0);
-            this.profileButton.Name = "profileButton";
-            this.profileButton.Size = new System.Drawing.Size(110, 33);
-            this.profileButton.TabIndex = 8;
-            this.profileButton.Text = "Профіль";
-            this.profileButton.UseVisualStyleBackColor = false;
-            this.profileButton.Click += new System.EventHandler(this.profileButton_Click);
+            this.departureCity.DataPropertyName = "departureCity";
+            this.departureCity.HeaderText = "Місто відправлення";
+            this.departureCity.MinimumWidth = 10;
+            this.departureCity.Name = "departureCity";
+            this.departureCity.ReadOnly = true;
+            this.departureCity.Width = 196;
             // 
-            // button2
+            // destinationCity
             // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(238, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(112, 33);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.destinationCity.DataPropertyName = "destinationCity";
+            this.destinationCity.HeaderText = "Місто прибуття";
+            this.destinationCity.MinimumWidth = 10;
+            this.destinationCity.Name = "destinationCity";
+            this.destinationCity.ReadOnly = true;
+            this.destinationCity.Width = 161;
+            // 
+            // intermediateLandingPoint
+            // 
+            this.intermediateLandingPoint.DataPropertyName = "intermediateLandingPoint";
+            this.intermediateLandingPoint.HeaderText = "Місто пересадки";
+            this.intermediateLandingPoint.MinimumWidth = 10;
+            this.intermediateLandingPoint.Name = "intermediateLandingPoint";
+            this.intermediateLandingPoint.ReadOnly = true;
+            this.intermediateLandingPoint.Width = 172;
+            // 
+            // dateTime
+            // 
+            this.dateTime.DataPropertyName = "dateTime";
+            this.dateTime.HeaderText = "Дата";
+            this.dateTime.MinimumWidth = 8;
+            this.dateTime.Name = "dateTime";
+            this.dateTime.ReadOnly = true;
+            this.dateTime.Width = 84;
+            // 
+            // flightDuration
+            // 
+            this.flightDuration.DataPropertyName = "flightDuration";
+            this.flightDuration.HeaderText = "Тривалість";
+            this.flightDuration.MinimumWidth = 10;
+            this.flightDuration.Name = "flightDuration";
+            this.flightDuration.ReadOnly = true;
+            this.flightDuration.Width = 129;
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "Номер рейсу";
+            this.id.MinimumWidth = 10;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Width = 141;
+            // 
+            // price
+            // 
+            this.price.DataPropertyName = "price";
+            this.price.HeaderText = "Ціна";
+            this.price.MinimumWidth = 10;
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
+            this.price.Width = 78;
+            // 
+            // numberOfAvailableSeats
+            // 
+            this.numberOfAvailableSeats.DataPropertyName = "numberOfAvailableSeats";
+            this.numberOfAvailableSeats.HeaderText = "Залишилось місць";
+            this.numberOfAvailableSeats.MinimumWidth = 10;
+            this.numberOfAvailableSeats.Name = "numberOfAvailableSeats";
+            this.numberOfAvailableSeats.ReadOnly = true;
+            this.numberOfAvailableSeats.Width = 186;
             // 
             // SearchFlightsForm
             // 
@@ -454,20 +546,20 @@ namespace Project
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1148, 591);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.profileButton);
+            this.Controls.Add(button2);
+            this.Controls.Add(profileButton);
             this.Controls.Add(this.dataGridView);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(panel1);
+            this.Controls.Add(menuStrip1);
+            this.MainMenuStrip = menuStrip1;
             this.MinimumSize = new System.Drawing.Size(1170, 647);
             this.Name = "SearchFlightsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.SearchFlightsForm_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
@@ -477,8 +569,6 @@ namespace Project
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
@@ -499,14 +589,12 @@ namespace Project
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox toCityTextBox;
         private System.Windows.Forms.TextBox fromCityTextBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button SearchButton;
-        private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.DateTimePicker datePicker;
         private System.Windows.Forms.CheckBox anywhenСheckBox;
         private System.Windows.Forms.MenuStrip menuStrip2;
@@ -515,8 +603,15 @@ namespace Project
         private System.Windows.Forms.ToolStripMenuItem sortPriceDown;
         private System.Windows.Forms.ToolStripMenuItem numberOfSeatsUp;
         private System.Windows.Forms.ToolStripMenuItem numberOtSeatsDown;
-        private System.Windows.Forms.Button profileButton;
-        private System.Windows.Forms.Button button2;
+        private DataGridView dataGridView;
+        private DataGridViewTextBoxColumn departureCity;
+        private DataGridViewTextBoxColumn destinationCity;
+        private DataGridViewTextBoxColumn intermediateLandingPoint;
+        private DataGridViewTextBoxColumn dateTime;
+        private DataGridViewTextBoxColumn flightDuration;
+        private DataGridViewTextBoxColumn id;
+        private DataGridViewTextBoxColumn price;
+        private DataGridViewTextBoxColumn numberOfAvailableSeats;
         //private DataGridViewTextBoxColumn DepartureCity;
         //private DataGridViewTextBoxColumn DestinationCity;
         //private DataGridViewTextBoxColumn IntermediateLandingPoint;

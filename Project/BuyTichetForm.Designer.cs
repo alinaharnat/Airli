@@ -30,7 +30,7 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.curFlightInfo = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.BuyPanel = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.numSeatsTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,8 +46,9 @@
             this.BuisinessRadioButton = new System.Windows.Forms.RadioButton();
             this.FirstRadioButton = new System.Windows.Forms.RadioButton();
             this.BuyButton = new System.Windows.Forms.Button();
+            this.messageLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.BuyPanel.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -72,18 +73,19 @@
             this.curFlightInfo.TabIndex = 0;
             this.curFlightInfo.Text = "Information";
             // 
-            // panel2
+            // BuyPanel
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
-            this.panel2.Controls.Add(this.panel4);
-            this.panel2.Controls.Add(this.panel5);
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.BuyButton);
-            this.panel2.Location = new System.Drawing.Point(591, 95);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(616, 443);
-            this.panel2.TabIndex = 1;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            this.BuyPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
+            this.BuyPanel.Controls.Add(this.messageLabel);
+            this.BuyPanel.Controls.Add(this.panel4);
+            this.BuyPanel.Controls.Add(this.panel5);
+            this.BuyPanel.Controls.Add(this.panel3);
+            this.BuyPanel.Controls.Add(this.BuyButton);
+            this.BuyPanel.Location = new System.Drawing.Point(591, 95);
+            this.BuyPanel.Name = "BuyPanel";
+            this.BuyPanel.Size = new System.Drawing.Size(616, 443);
+            this.BuyPanel.TabIndex = 1;
+            this.BuyPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // panel4
             // 
@@ -240,20 +242,30 @@
             this.BuyButton.UseVisualStyleBackColor = true;
             this.BuyButton.Click += new System.EventHandler(this.BuyButton_Click);
             // 
+            // messageLabel
+            // 
+            this.messageLabel.AutoSize = true;
+            this.messageLabel.Location = new System.Drawing.Point(37, 26);
+            this.messageLabel.Name = "messageLabel";
+            this.messageLabel.Size = new System.Drawing.Size(113, 20);
+            this.messageLabel.TabIndex = 9;
+            this.messageLabel.Text = "messageLabel";
+            // 
             // BuyTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(1245, 708);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.BuyPanel);
             this.Controls.Add(this.panel1);
             this.Name = "BuyTicketForm";
             this.Text = "BuyTicketForm";
             this.Load += new System.EventHandler(this.BuyTichetForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
+            this.BuyPanel.ResumeLayout(false);
+            this.BuyPanel.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -268,7 +280,7 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label curFlightInfo;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel BuyPanel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label3;
@@ -284,5 +296,6 @@
         private System.Windows.Forms.TextBox handBaggageTextBox;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label messageLabel;
     }
 }

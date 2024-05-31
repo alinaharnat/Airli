@@ -18,6 +18,7 @@ namespace Project
         public ProfileForm()
         {
             InitializeComponent();
+            dataGridView.AutoGenerateColumns = false;
 
         }
         public ProfileForm(User user)
@@ -25,6 +26,7 @@ namespace Project
             currentUser = user;
             InitializeComponent();
             ShowUserInfo();
+            dataGridView.AutoGenerateColumns = false;
         }
         public  void ShowUserInfo()
         {
@@ -78,7 +80,10 @@ namespace Project
 
         private void ShowHistoryButton_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = currentUser.HistoryOfOrders;
+           
+            dataGridView.DataSource = currentUser.HistoryOfOrders;
+           
+          
         }
     }
 }
