@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
+using System.IO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Globalization;
 
@@ -17,7 +17,7 @@ namespace Project
 {
     public partial class SearchFlightsForm : Form
     {
-        //private User currentUser;
+        Flights flights = new Flights();
         private User currentUser;
         public SearchFlightsForm()
         {
@@ -34,25 +34,20 @@ namespace Project
 
         }
         string path = @"C:\Users\alina\OneDrive\Робочий стіл\Project C#\Project\Project\AvaliableFlights.json";
-        List<Flights> listFlights = new List<Flights>();
+        List<Flight> listFlights = new List<Flight>();
         private void SearchButton_Click(object sender, EventArgs e)
         {
+            flights = flights.GetAvailableFlights(path);
+
             dataGridView.Show();
             var from = fromCityTextBox.Text;
             var to = toCityTextBox.Text;
             var date = datePicker.Value.Date;
-           
-            //change realisation
-            
-            if (!anywhenСheckBox.Checked)
-            {
-                
-                listFlights = Flights.SearchAvailableFlights(from, to, date, false,  path);
-            }
-            else if (anywhenСheckBox.Checked)
-            {
-                listFlights = Flights.SearchAvailableFlights(from, to, date, true, path);
-            }
+            bool anywhen = anywhenСheckBox.Checked;
+            bool straight = straightCheckBox.Checked;   
+  
+            listFlights = flights.SearchAvailableFlights(from, to, date, anywhen, straight, path);
+             
            
             if (listFlights.Count != 0)
             {
@@ -122,11 +117,18 @@ namespace Project
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow selectedRow = dataGridView.Rows[e.RowIndex];
-                var selectedIteam = (Flights)selectedRow.DataBoundItem;
+                var selectedIteam = (Flight)selectedRow.DataBoundItem;
                 this.Hide();
                 var form = new BuyTicketForm(selectedIteam, currentUser);
                 form.Show();
             }
+        }
+
+        private void dateSortButton_Click(object sender, EventArgs e)
+        {
+            listFlights = listFlights.OrderBy(x => x.DateTime).ToList();
+            dataGridView.DataSource = null;
+            dataGridView.DataSource = listFlights;
         }
     }
 }

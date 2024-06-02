@@ -1,54 +1,10 @@
-[
-  {
-    "HistoryOfOrders": [],
-    "unpaidUserOrders": [],
-    "FirstName": "Alina",
-    "LastName": "Harnat",
-    "Email": "admin@gmail.com",
-    "Password": "12345678"
-  },
-  {
-    "HistoryOfOrders": [
-      {
-        "Flight": null,
-        "NumSeats": 1,
-        "TotalPrice": 0.0,
-        "InfoOrder": "Місто відправлення:Київ\nМісто прибуття:Стамбул \nМісто пересадки:None\nНомер рейсу:15  \nДата:15.06.2024 12:00:00 \nТривалість:01:30:00 \nАвіакомпанія:Airline C\nКлас:econom \nКількість замовлених місць:1 \nЗагальна сума замовлення:52",
-        "HandB": 0,
-        "RegistrationB": 0,
-        "SeatClass": null,
-        "State": false,
-        "OrderTimer": null
-      }
-    ],
-    "unpaidUserOrders": [],
-    "FirstName": "Alina",
-    "LastName": "Harnat",
-    "Email": "aharnat@gmail.com",
-    "Password": "12345678"
-  },
-  {
-    "HistoryOfOrders": [],
-    "unpaidUserOrders": [],
-    "FirstName": "Harnat",
-    "LastName": "Alina",
-    "Email": "alinaharnat@gmail.com",
-    "Password": "12345678"
-  },
-  {
-    "HistoryOfOrders": [],
-    "unpaidUserOrders": [],
-    "FirstName": "Harnat",
-    "LastName": "Alina",
-    "Email": "harnat@gmail.com",
-    "Password": "12345678"
-  },
-  {
-    "HistoryOfOrders": [],
-    "unpaidUserOrders": [],
-    "FirstName": "Harnat",
-    "LastName": "Alina",
-    "Email": "alinahrnt@gmail.com",
-    "Password": "12345678"
-  }
-]
+{
+  "UsersList": [
+    {
+      "FirstName": "\u0410\u043B\u0456\u043D\u0430",
+      "LastName": "\u0413\u0430\u0440\u043D\u0430\u0442",
+      "Email": "test@gmail.com",
+      "Password": "12345678"
+    }
+  ]
+}

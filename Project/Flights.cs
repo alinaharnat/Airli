@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -8,173 +8,119 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.Json;
+
+
 
 namespace Project
 {
-    
+
     public class Flights
     {
-        private string departureСity;
-        private string destinationСity;
-        private string intermediateLandingPoint;
-        private DateTime dateTime;
-        private TimeSpan flightDuration;
-        private int id;
-        private double price;
-        private string carrier;
-        private int numberOfAvailableSeats => seatsBuisiness+seatsEconom+seatsFirst;
-        private int seatsEconom;
-        private int seatsBuisiness;
-        private int seatsFirst;
-
-
-        public string DepartureCity { get; set; }
-        public string DestinationCity { get; set; }
-        public string IntermediateLandingPoint { get; set; }
-        public DateTime DateTime { get; set; }
-        public int Id { get; set; }
-        public double Price { get; set; }
-        public string Carrier { get; set; }
-        public TimeSpan FlightDuration { get; set; }
-        public int NumberOfAvailableSeats { get; set; }
-        public int SeatsEconom {  get; set; }
-        public int SeatsBuisiness {  get; set; }
-        public int SeatsFirst {  get; set; }
+        public List<Flight> FlightsList { get; set; }
         public Flights()
         {
-
+            FlightsList = new List<Flight>();
         }
-        public Flights(string depСity, string destСity, string interLandPoint, DateTime dTime, TimeSpan duration, int i, double p, string carr, int AvailableSeats)
+        //Loading data
+        public Flights GetAvailableFlights(string path)
         {
-          this.departureСity = depСity;
-          this.destinationСity = destСity;
-          this.intermediateLandingPoint = interLandPoint;
-         this.dateTime = dTime;
-        this.flightDuration = duration;
-        this.id = i;
-        this.price = p;
-        this.carrier = carr;
-       this.NumberOfAvailableSeats = AvailableSeats;
+            var jsonStr = File.ReadAllText(path);
+            return JsonSerializer.Deserialize<Flights>(jsonStr);
         }
-        public string GetInfoAboutFlight()
+        //
+        public void SaveFlightsData(string path)
         {
-            var res = $"Номер рейсу:{Id} \nМісто відправлення:{DepartureCity} \nМісто прибуття:{DestinationCity}\nМісто пресадки:{IntermediateLandingPoint} \nДата:{DateTime}\nТривалість:{FlightDuration}\nЦіна:{Price}  \nАвіакомпанія:{Carrier}  \nКількість вільних місць:\nЕконом-клас:{SeatsEconom}\nБізнес-клас:{SeatsBuisiness}\nПерший клас:{SeatsFirst}";
-            return res ;
+            var jsonStr = JsonSerializer.Serialize(this);
+            File.WriteAllText(path, jsonStr);
         }
-        public static List<Flights> GetAvailableFlights(string path)
+        public List<Flight> SearchAvailableFlights(string from, string to, DateTime date, bool anywhen, bool straight, string path)
         {
-            var json = File.ReadAllText(path);
-            return JsonConvert.DeserializeObject<List<Flights>>(json);
-        }
-        public static List<Flights> SearchAvailableFlights(string from, string to, DateTime date,bool anywhen, string path)
-        {
-            var flights = GetAvailableFlights(path);
-
-            var res = new List<Flights>();
+            var res = new List<Flight>();
             if (!anywhen)
             {
-                foreach (var flight in flights)
+                foreach (var flight in FlightsList)
                 {
-                    if ((flight.DepartureCity.Equals(from, StringComparison.OrdinalIgnoreCase) || string.IsNullOrEmpty(from) )&&
-                       ( flight.DestinationCity.Equals(to, StringComparison.OrdinalIgnoreCase) || string.IsNullOrEmpty(to)) &&
-                        (flight.DateTime.Date == date) && (flight.DateTime.Date >= DateTime.Now) && ( flight.NumberOfAvailableSeats > 0))
+                    if ((flight.DepartureCity.Equals(from, StringComparison.OrdinalIgnoreCase) || string.IsNullOrEmpty(from)) &&
+                       (flight.DestinationCity.Equals(to, StringComparison.OrdinalIgnoreCase) || string.IsNullOrEmpty(to)) &&
+                        (flight.DateTime.Date == date) && (flight.DateTime.Date >= DateTime.Now) && (flight.NumberOfAvailableSeats > 0))
                     {
-                       
-                            res.Add(flight);
-                        
+
+                        res.Add(flight);
+
                     }
                 }
             }
             else
             {
-                foreach (var flight in flights)
+                foreach (var flight in FlightsList)
                 {
-                    if ((flight.DepartureCity.Equals(from, StringComparison.OrdinalIgnoreCase) || string.IsNullOrEmpty(from) )&&
-                       ( flight.DestinationCity.Equals(to, StringComparison.OrdinalIgnoreCase) || string.IsNullOrEmpty(to)) && (flight.DateTime.Date >= DateTime.Now)&&(flight.NumberOfAvailableSeats > 0))
+                    if ((flight.DepartureCity.Equals(from, StringComparison.OrdinalIgnoreCase) || string.IsNullOrEmpty(from)) &&
+                       (flight.DestinationCity.Equals(to, StringComparison.OrdinalIgnoreCase) || string.IsNullOrEmpty(to)) && (flight.DateTime.Date >= DateTime.Now) && (flight.NumberOfAvailableSeats > 0))
                     {
-                            res.Add(flight);
+                        res.Add(flight);
                     }
                 }
             }
-           
+
+            if (res.Count > 0 && straight)
+            {
+                
+                foreach (var flight in res)
+                {
+                    if (!flight.IntermediateLandingPoint.Equals("-"))
+                    {
+                        res.Remove(flight);
+                    }
+                }
+               
+            }
+     
             return res;
         }
-        public static List<Flights> GetData(string path)
+
+
+        public void UpdateInfo(Flight flight, string path)
         {
-            string data = File.ReadAllText(path);
-            var flights = JsonConvert.DeserializeObject<List<Flights>>(data);
-            return flights;
-        }
-        public static void UpdateInfo(Flights flight, string path)
-        {
-                var flights = GetData(path);
-                for (int i = 0; i < flights.Count; i++)
-                {
-                    if (flights[i].Id == flight.Id)
-                    {
-                        var newflight = flight;
-                        flights[i] = newflight;
-                        string data = JsonConvert.SerializeObject(flights);
-                        File.WriteAllText(path, data);
-                    }
-                }
-            }
-        public static bool SaveFlight(Flights flight                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          , string path)
-        {
-            try
+
+            for (int i = 0; i < FlightsList.Count; i++)
             {
-                string jsonData = File.ReadAllText(path);
-                var flights = JsonConvert.DeserializeObject<List<Flights>>(jsonData);
-                flights.Add(flight);
-                string data = JsonConvert.SerializeObject(flights);
-                File.WriteAllText(path, data);
-
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
-
-        
-
-
-        public static bool ChangeFlightInformation(Flights updatedFlight, string path)
-        {
-            var flights = GetData(path);
-            for (int i = 0; i < flights.Count; i++)
-            {
-                if (flights[i].Id == updatedFlight.Id)
+                if (FlightsList[i].Id == flight.Id)
                 {
 
-                    flights[i] = updatedFlight;
-                    string data = JsonConvert.SerializeObject(flights);
-                    File.WriteAllText(path, data);
-                    return true;
+                    FlightsList[i] = flight;
+                    SaveFlightsData(path);
                 }
             }
-            return false;
+
         }
-        public static void RemoveFlightsWithInterLandPoint(List<Flights> flights)
+        public void AddFlight(Flight flight,string path)
         {
-            foreach (var f in flights)
+            FlightsList.Add(flight);
+            SaveFlightsData(path);
+        }
+
+           public void DeleteInvalidFlights(string path)
+           {
+           
+            var validFlights = new List<Flight>();
+
+            foreach (var flight in FlightsList)
             {
-                if (f.IntermediateLandingPoint != "-")
+                if (flight.DateTime >= DateTime.Now)
                 {
-                    flights.Remove(f);
+                   validFlights.Add(flight);
                 }
             }
-          
+            FlightsList = validFlights;
+            SaveFlightsData(path);
         }
+
+
     }
-   
-    //public static void AddFlight()
-    //{
-    //    var res = new List<Flights>();
+            
 
-    //}
-    //
-   
 }
+ 
+  
+

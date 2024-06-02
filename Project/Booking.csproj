@@ -77,13 +77,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddFlightsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddFlightsForm.Designer.cs">
+      <DependentUpon>AddFlightsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="BuyTichetForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BuyTichetForm.Designer.cs">
       <DependentUpon>BuyTichetForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Card.cs" />
+    <Compile Include="Flight.cs" />
     <Compile Include="Flights.cs" />
     <Compile Include="LogInForm.cs">
       <SubType>Form</SubType>
@@ -115,6 +121,9 @@
     <Compile Include="User.cs" />
     <Compile Include="Users.cs" />
     <Compile Include="Validation.cs" />
+    <EmbeddedResource Include="AddFlightsForm.resx">
+      <DependentUpon>AddFlightsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BuyTichetForm.resx">
       <DependentUpon>BuyTichetForm.cs</DependentUpon>
     </EmbeddedResource>

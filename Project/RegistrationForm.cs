@@ -4,32 +4,39 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using Newtonsoft.Json;
+using System.Text.Json;
 using System.IO;
+
 
 
 namespace Project
 {
     public partial class RegistrationForm : Form
     {
+        Users users = new Users();
         public RegistrationForm()
         {
             InitializeComponent();
-            
         }
 
-        //Add validation of first/last name using  MaskedTextBox
-        //change email validation
         string path = @"C:\\Users\\alina\\OneDrive\\Робочий стіл\\Project C#\\Project\\Project\\InformationAboutUsers.json";
+        //string path = @"C:\Users\alina\OneDrive\Робочий стіл\Project C#\Project\Project\UsersInfo.json";
         private void registrationButton_Click(object sender, EventArgs e)
         {
-            if(!Validation.ValidateName(firstNameTextBox.Text,2) || !Validation.ValidateName(lastNameTextBox.Text,2))
+            users = users.LoadUsersData(path);
+
+            var lastName = lastNameTextBox.Text;
+            var firstName = firstNameTextBox.Text;
+            var email = emailTextBox.Text;
+            var password = passwordTextBox.Text;
+
+            if (!Validation.ValidateName(firstName,2) || !Validation.ValidateName(lastName, 2))
             {
                 MessageBox.Show("Довжина прізвища та імені має бути щонайменше 2 символи.");
-            }else if(passwordTextBox.Text.Length < 8)
+            }else if(password.Length < 8)
             {
                 MessageBox.Show("Довжина пароля має бути не менше 8 символів.");
-            }else if (firstNameTextBox.Text.Length == 0 || lastNameTextBox.Text.Length == 0 || emailTextBox.Text.Length == 0 || passwordTextBox.Text.Length == 0)
+            }else if (firstName.Length == 0 || lastName.Length == 0 || email.Length == 0 || password.Length == 0)
             {
                 MessageBox.Show("Заповніть всі обов'язкові поля.");
             }else if (!Validation.ValidateEmail(emailTextBox.Text))
@@ -38,28 +45,24 @@ namespace Project
             }
             else
             {
-                if (User.CheckEmail(emailTextBox.Text, path))
+                if (users.CheckEmail(email, path))
                 {
                     MessageBox.Show("Користувач з такою поштовою адресою вже існує.");
                 }
                 else
                 {
-                    var user = new User(emailTextBox.Text, passwordTextBox.Text, firstNameTextBox.Text, lastNameTextBox.Text);
-                    if (User.SaveUser(user,path))
-                    {
-                        Hide();
-                        var form = new SearchFlightsForm(user);
-                        form.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Помилка реєстрації.");
-                    }
+                    var user = new User(email, password, firstName, lastName);
+                    users.AddUser(user,path);
+                    //users.SaveUsersData(path);
+                    Hide();
+                    var form = new SearchFlightsForm(user);
+                    form.Show();
                 }
+                   
             }
-           
         }
-        private void lastNameTextBox_Leave(object sender, EventArgs e)
+        //LastNameTextBox
+        private void lastNameTextBox_Validating(object sender, CancelEventArgs e)
         {
             if (!Validation.ValidateName(lastNameTextBox.Text,2))
             {
@@ -75,8 +78,8 @@ namespace Project
                 lastNameTextBox.ForeColor = Color.Black;
             }
         }
-
-        private void firstNameTextBox_Leave(object sender, EventArgs e)
+       //
+        private void firstNameTextBox_Validating(object sender, CancelEventArgs e)
         {
             if (!Validation.ValidateName(firstNameTextBox.Text,2))
             {
@@ -91,8 +94,8 @@ namespace Project
                 firstNameTextBox.ForeColor = Color.Black;
             }
         }
-
-        private void emailTextBox_Leave(object sender, EventArgs e)
+        //
+        private void emailTextBox_Validating(object sender, CancelEventArgs e)
         {
         
             if (!Validation.ValidateEmail(emailTextBox.Text))
@@ -109,8 +112,8 @@ namespace Project
                 emailTextBox.ForeColor = Color.Black;
             }
         }
-
-        private void passwordTextBox_Leave(object sender, EventArgs e)
+        //
+        private void passwordTextBox_Validating(object sender, CancelEventArgs e)
         {
             if (!Validation.ValidateLength(8, passwordTextBox.Text))
             {
@@ -126,6 +129,13 @@ namespace Project
             {
                 passwordTextBox.ForeColor = Color.Black;
             }
+        }
+
+        private void returnButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form = new LogInForm();
+            form.Show();
         }
     }
 }

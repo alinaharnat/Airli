@@ -7,13 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.Json;
+using System.IO;
 
 namespace Project
 {
     public partial class ProfileForm : Form
     {
+        Users users = new Users();
+        Flights flights = new Flights();
+
         private User currentUser;
-        public User CurrentUser { get; set; }
+        public User CurrentUser { get { return currentUser; } set { currentUser = value; } }
         
         public ProfileForm()
         {
@@ -23,7 +28,7 @@ namespace Project
         }
         public ProfileForm(User user)
         {
-            currentUser = user;
+            CurrentUser = user;
             InitializeComponent();
             ShowUserInfo();
             dataGridView.AutoGenerateColumns = false;
@@ -35,12 +40,14 @@ namespace Project
             curUserEmail.Text = currentUser.Email;
             curUserPassword.Text = currentUser.Password;
         }
-        string path = @"C:\\Users\\alina\\OneDrive\\Робочий стіл\\Project C#\\Project\\Project\\InformationAboutUsers.json";
+        string path = @"C:\Users\alina\OneDrive\Робочий стіл\Project C#\Project\Project\InformationAboutUsers.json";
 
         private void saveChangesButton_Click(object sender, EventArgs e)
         {
-            if (!User.ChangeUserInformation(currentUser,curUserEmail.Text, currentUser.LastName, currentUser.FirstName, currentUser.Password, path))
+            users = users.LoadUsersData(path);
+            if (!users.ChangeUserInformation(currentUser, currentUser.Email, curUserPassword.Text, curUserLastName.Text, curUserFirstName.Text, path))
             {
+                ShowUserInfo();
                 MessageBox.Show("Введені дані не відповідають вимогам.");
             }
             else
@@ -53,17 +60,17 @@ namespace Project
 
         private void curUserLastName_TextChanged(object sender, EventArgs e)
         {
-            currentUser.LastName = curUserLastName.Text;
+           currentUser.LastName = curUserLastName.Text;
         }
 
         private void curUserFirstName_TextChanged(object sender, EventArgs e)
         {
-            currentUser.FirstName = curUserFirstName.Text;
+           currentUser.FirstName = curUserFirstName.Text;
         }
 
         private void curUserPassword_TextChanged(object sender, EventArgs e)
         {
-            currentUser.Password = curUserPassword.Text;
+           currentUser.Password = curUserPassword.Text;
         }
 
         private void returnButton_Click(object sender, EventArgs e)
@@ -73,17 +80,19 @@ namespace Project
             form.Show();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+       
 
         private void ShowHistoryButton_Click(object sender, EventArgs e)
         {
-           
+            dataGridView.Show();
             dataGridView.DataSource = currentUser.HistoryOfOrders;
            
           
+        }
+
+        private void ProfileForm_Load(object sender, EventArgs e)
+        {
+            dataGridView.Hide();
         }
     }
 }
