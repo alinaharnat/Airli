@@ -31,27 +31,33 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.curFlightInfo = new System.Windows.Forms.Label();
             this.BuyPanel = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.numSeatsTextBox = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.registBaggageTextBox = new System.Windows.Forms.TextBox();
-            this.handBaggageTextBox = new System.Windows.Forms.TextBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.buyPanel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.EconomyRadioButton = new System.Windows.Forms.RadioButton();
             this.BuisinessRadioButton = new System.Windows.Forms.RadioButton();
             this.FirstRadioButton = new System.Windows.Forms.RadioButton();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.numSeatsUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.numRBUpDown = new System.Windows.Forms.NumericUpDown();
+            this.numHBUpDown = new System.Windows.Forms.NumericUpDown();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.BuyButton = new System.Windows.Forms.Button();
             this.messageLabel = new System.Windows.Forms.Label();
+            this.returnButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.BuyPanel.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
+            this.buyPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numSeatsUpDown)).BeginInit();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numRBUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numHBUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -76,104 +82,23 @@
             // BuyPanel
             // 
             this.BuyPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
+            this.BuyPanel.Controls.Add(this.buyPanel1);
             this.BuyPanel.Controls.Add(this.messageLabel);
-            this.BuyPanel.Controls.Add(this.panel4);
-            this.BuyPanel.Controls.Add(this.panel5);
-            this.BuyPanel.Controls.Add(this.panel3);
-            this.BuyPanel.Controls.Add(this.BuyButton);
-            this.BuyPanel.Location = new System.Drawing.Point(591, 95);
+            this.BuyPanel.Location = new System.Drawing.Point(501, 95);
             this.BuyPanel.Name = "BuyPanel";
             this.BuyPanel.Size = new System.Drawing.Size(616, 443);
             this.BuyPanel.TabIndex = 1;
-            this.BuyPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // panel4
+            // buyPanel1
             // 
-            this.panel4.Controls.Add(this.numSeatsTextBox);
-            this.panel4.Controls.Add(this.label3);
-            this.panel4.Location = new System.Drawing.Point(37, 155);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(522, 50);
-            this.panel4.TabIndex = 8;
-            // 
-            // numSeatsTextBox
-            // 
-            this.numSeatsTextBox.Location = new System.Drawing.Point(159, 11);
-            this.numSeatsTextBox.Name = "numSeatsTextBox";
-            this.numSeatsTextBox.Size = new System.Drawing.Size(100, 26);
-            this.numSeatsTextBox.TabIndex = 2;
-            this.numSeatsTextBox.TextChanged += new System.EventHandler(this.numSeatsTextBox_TextChanged);
-            this.numSeatsTextBox.Leave += new System.EventHandler(this.numSeatsTextBox_Leave);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label3.Location = new System.Drawing.Point(3, 11);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(140, 22);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Кількість місць:";
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.registBaggageTextBox);
-            this.panel5.Controls.Add(this.handBaggageTextBox);
-            this.panel5.Controls.Add(this.checkBox2);
-            this.panel5.Controls.Add(this.checkBox1);
-            this.panel5.Controls.Add(this.label4);
-            this.panel5.Location = new System.Drawing.Point(37, 230);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(522, 50);
-            this.panel5.TabIndex = 8;
-            // 
-            // registBaggageTextBox
-            // 
-            this.registBaggageTextBox.Location = new System.Drawing.Point(473, 13);
-            this.registBaggageTextBox.Name = "registBaggageTextBox";
-            this.registBaggageTextBox.Size = new System.Drawing.Size(36, 26);
-            this.registBaggageTextBox.TabIndex = 5;
-            this.registBaggageTextBox.Leave += new System.EventHandler(this.registBaggageTextBox_Leave);
-            // 
-            // handBaggageTextBox
-            // 
-            this.handBaggageTextBox.Location = new System.Drawing.Point(227, 13);
-            this.handBaggageTextBox.Name = "handBaggageTextBox";
-            this.handBaggageTextBox.Size = new System.Drawing.Size(32, 26);
-            this.handBaggageTextBox.TabIndex = 3;
-            this.handBaggageTextBox.Leave += new System.EventHandler(this.handBaggageTextBox_Leave);
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(265, 15);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(211, 24);
-            this.checkBox2.TabIndex = 4;
-            this.checkBox2.Text = "Зареєстрований багаж";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(77, 15);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(148, 24);
-            this.checkBox1.TabIndex = 3;
-            this.checkBox1.Text = "Ручна поклажа";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label4.Location = new System.Drawing.Point(3, 14);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 22);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Багаж:";
+            this.buyPanel1.Controls.Add(this.panel3);
+            this.buyPanel1.Controls.Add(this.panel4);
+            this.buyPanel1.Controls.Add(this.panel5);
+            this.buyPanel1.Controls.Add(this.BuyButton);
+            this.buyPanel1.Location = new System.Drawing.Point(41, 49);
+            this.buyPanel1.Name = "buyPanel1";
+            this.buyPanel1.Size = new System.Drawing.Size(539, 367);
+            this.buyPanel1.TabIndex = 10;
             // 
             // panel3
             // 
@@ -181,7 +106,7 @@
             this.panel3.Controls.Add(this.EconomyRadioButton);
             this.panel3.Controls.Add(this.BuisinessRadioButton);
             this.panel3.Controls.Add(this.FirstRadioButton);
-            this.panel3.Location = new System.Drawing.Point(37, 74);
+            this.panel3.Location = new System.Drawing.Point(3, 21);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(522, 50);
             this.panel3.TabIndex = 7;
@@ -232,9 +157,94 @@
             this.FirstRadioButton.UseVisualStyleBackColor = true;
             this.FirstRadioButton.CheckedChanged += new System.EventHandler(this.FirstRadioButton_CheckedChanged);
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.numSeatsUpDown);
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Location = new System.Drawing.Point(3, 115);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(522, 50);
+            this.panel4.TabIndex = 8;
+            // 
+            // numSeatsUpDown
+            // 
+            this.numSeatsUpDown.Location = new System.Drawing.Point(149, 11);
+            this.numSeatsUpDown.Name = "numSeatsUpDown";
+            this.numSeatsUpDown.Size = new System.Drawing.Size(120, 26);
+            this.numSeatsUpDown.TabIndex = 3;
+            this.numSeatsUpDown.ValueChanged += new System.EventHandler(this.numSeatsUpDown_ValueChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.label3.Location = new System.Drawing.Point(3, 11);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(140, 22);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Кількість місць:";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.numRBUpDown);
+            this.panel5.Controls.Add(this.numHBUpDown);
+            this.panel5.Controls.Add(this.checkBox2);
+            this.panel5.Controls.Add(this.checkBox1);
+            this.panel5.Controls.Add(this.label4);
+            this.panel5.Location = new System.Drawing.Point(3, 203);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(522, 50);
+            this.panel5.TabIndex = 8;
+            // 
+            // numRBUpDown
+            // 
+            this.numRBUpDown.Location = new System.Drawing.Point(479, 13);
+            this.numRBUpDown.Name = "numRBUpDown";
+            this.numRBUpDown.Size = new System.Drawing.Size(40, 26);
+            this.numRBUpDown.TabIndex = 6;
+            // 
+            // numHBUpDown
+            // 
+            this.numHBUpDown.Location = new System.Drawing.Point(219, 13);
+            this.numHBUpDown.Name = "numHBUpDown";
+            this.numHBUpDown.Size = new System.Drawing.Size(40, 26);
+            this.numHBUpDown.TabIndex = 4;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(265, 15);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(211, 24);
+            this.checkBox2.TabIndex = 4;
+            this.checkBox2.Text = "Зареєстрований багаж";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(77, 15);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(148, 24);
+            this.checkBox1.TabIndex = 3;
+            this.checkBox1.Text = "Ручна поклажа";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.label4.Location = new System.Drawing.Point(3, 14);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 22);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Багаж:";
+            // 
             // BuyButton
             // 
-            this.BuyButton.Location = new System.Drawing.Point(207, 352);
+            this.BuyButton.Location = new System.Drawing.Point(184, 306);
             this.BuyButton.Name = "BuyButton";
             this.BuyButton.Size = new System.Drawing.Size(185, 58);
             this.BuyButton.TabIndex = 3;
@@ -251,27 +261,43 @@
             this.messageLabel.TabIndex = 9;
             this.messageLabel.Text = "messageLabel";
             // 
+            // returnButton
+            // 
+            this.returnButton.Location = new System.Drawing.Point(44, 13);
+            this.returnButton.Name = "returnButton";
+            this.returnButton.Size = new System.Drawing.Size(135, 30);
+            this.returnButton.TabIndex = 2;
+            this.returnButton.Text = "Повернутися";
+            this.returnButton.UseVisualStyleBackColor = true;
+            this.returnButton.Click += new System.EventHandler(this.returnButton_Click);
+            // 
             // BuyTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(1245, 708);
+            this.ClientSize = new System.Drawing.Size(1148, 591);
+            this.Controls.Add(this.returnButton);
             this.Controls.Add(this.BuyPanel);
             this.Controls.Add(this.panel1);
             this.Name = "BuyTicketForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BuyTicketForm";
             this.Load += new System.EventHandler(this.BuyTichetForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.BuyPanel.ResumeLayout(false);
             this.BuyPanel.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
+            this.buyPanel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numSeatsUpDown)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numRBUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numHBUpDown)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -291,11 +317,13 @@
         private System.Windows.Forms.RadioButton BuisinessRadioButton;
         private System.Windows.Forms.RadioButton FirstRadioButton;
         private System.Windows.Forms.Button BuyButton;
-        private System.Windows.Forms.TextBox numSeatsTextBox;
-        private System.Windows.Forms.TextBox registBaggageTextBox;
-        private System.Windows.Forms.TextBox handBaggageTextBox;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label messageLabel;
+        private System.Windows.Forms.NumericUpDown numSeatsUpDown;
+        private System.Windows.Forms.NumericUpDown numRBUpDown;
+        private System.Windows.Forms.NumericUpDown numHBUpDown;
+        private System.Windows.Forms.Button returnButton;
+        private System.Windows.Forms.Panel buyPanel1;
     }
 }

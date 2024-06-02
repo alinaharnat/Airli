@@ -1,6 +1,4 @@
-﻿using System.Text.Json;
-using System.IO;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,30 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Globalization;
-
 
 namespace Project
 {
-    public partial class SearchFlightsForm : Form
+    public partial class EditFlightsForm : Form
     {
-        Flights flights = new Flights();
-        private User currentUser;
-        public SearchFlightsForm()
+        Flights flights = new Flights();    
+
+        public EditFlightsForm()
         {
             InitializeComponent();
-            dataGridView.AutoGenerateColumns = false;
-
         }
-        public SearchFlightsForm(User user)
+
+        private void EditFlightsForm_Load(object sender, EventArgs e)
         {
-            currentUser = user;
-            InitializeComponent();
-            dataGridView.AutoGenerateColumns = false;
-
+            dataGridView.Hide();
 
         }
+
+
         string path = @"C:\Users\alina\OneDrive\Робочий стіл\Project C#\Project\Project\AvaliableFlights.json";
         List<Flight> listFlights = new List<Flight>();
         private void SearchButton_Click(object sender, EventArgs e)
@@ -43,12 +36,13 @@ namespace Project
             var from = fromCityTextBox.Text;
             var to = toCityTextBox.Text;
             var date = datePicker.Value.Date;
+            var id = (int)IdUpDown.Value;
             bool anywhen = anywhenСheckBox.Checked;
-            bool straight = straightCheckBox.Checked;   
-  
-            listFlights = flights.SearchAvailableFlights(from, to, date, anywhen, straight, path);
-             
-           
+            bool straight = straightCheckBox.Checked;
+
+            listFlights = flights.SearchFlightsForEditing(from, to, date,id, anywhen, straight, path);
+
+
             if (listFlights.Count != 0)
             {
                 dataGridView.DataSource = listFlights;
@@ -66,13 +60,6 @@ namespace Project
 
             datePicker.CustomFormat = "dd-MM-yyyy";
 
-        }
-
-        private void SearchFlightsForm_Load(object sender, EventArgs e)
-        {
-            datePicker.CustomFormat = " ";
-            datePicker.Format = DateTimePickerFormat.Custom;
-            dataGridView.Hide();
         }
 
         private void sortPriceUp_Click(object sender, EventArgs e)
@@ -103,32 +90,16 @@ namespace Project
             dataGridView.DataSource = listFlights;
         }
 
-        private void profileButton_Click(object sender, EventArgs e)
-        {
-            Hide();
-            var form = new ProfileForm(currentUser);
-            form.Show();
-        }
-
-
-
-        private void dataGridView_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow selectedRow = dataGridView.Rows[e.RowIndex];
-                var selectedIteam = (Flight)selectedRow.DataBoundItem;
-                this.Hide();
-                var form = new BuyTicketForm(selectedIteam, currentUser);
-                form.Show();
-            }
-        }
-
         private void dateSortButton_Click(object sender, EventArgs e)
         {
             listFlights = listFlights.OrderBy(x => x.DateTime).ToList();
             dataGridView.DataSource = null;
             dataGridView.DataSource = listFlights;
+        }
+
+        private void anywhenСheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

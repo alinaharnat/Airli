@@ -15,34 +15,48 @@ namespace Project
 {
     public partial class LogInForm : Form
     {
+        Users users = new Users();
         public LogInForm()
         {
             InitializeComponent();
         }
-        //Add function forgot password
-        User curUser = new User();
+        
 
         string path = @"C:\\Users\\alina\\OneDrive\\Робочий стіл\\Project C#\\Project\\Project\\InformationAboutUsers.json";
         private void label5_Click(object sender, EventArgs e)
         {
-            Hide();
+            this.Hide();
             var form = new RegistrationForm();
             form.Show();
         }
 
         private void logInButton_Click(object sender, EventArgs e)
         {
-            User curUser = User.LoginUser(emailTextBox.Text,passwordTextBox.Text, path);
-            if (curUser != null)
+            users = users.LoadUsersData(path);
+            var email = emailTextBox.Text;
+            var password = passwordTextBox.Text;
+
+            if(email == "alina@gmail.com"&& password == "12345678")
             {
-                Hide();
-                var form = new SearchFlightsForm(curUser);
+                this.Hide();
+                var form = new AddFlightsForm();
                 form.Show();
             }
             else
-            {
-                MessageBox.Show("Неправильна поштова адреса або пароль.");
+            {  
+                if (users.LoginUser(email, password, path) != null)
+                {
+                    var newUser = users.LoginUser(email, password, path);
+                    Hide();
+                    var form = new SearchFlightsForm(newUser);
+                    form.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Неправильна поштова адреса або пароль.");
+                }
             }
+            
         }
         private void emailTextBox_Leave(object sender, EventArgs e)
         {

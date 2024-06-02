@@ -1,4 +1,6 @@
-﻿namespace Project
+﻿using System.ComponentModel;
+
+namespace Project
 {
     partial class RegistrationForm
     {
@@ -37,6 +39,7 @@
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.emailTextBox = new System.Windows.Forms.TextBox();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
+            this.returnButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // registrationButton
@@ -98,8 +101,9 @@
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(333, 46);
             this.lastNameTextBox.TabIndex = 35;
-            this.lastNameTextBox.Leave += new System.EventHandler(this.lastNameTextBox_Leave);
             this.lastNameTextBox.TextChanged += new System.EventHandler(this.lastNameTextBox_TextChanged);
+            this.lastNameTextBox.Validating += new CancelEventHandler(this.lastNameTextBox_Validating);
+            // 
             // firstNameTextBox
             // 
             this.firstNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
@@ -108,8 +112,8 @@
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(333, 46);
             this.firstNameTextBox.TabIndex = 36;
-            this.firstNameTextBox.Leave += new System.EventHandler(this.firstNameTextBox_Leave);
             this.firstNameTextBox.TextChanged += new System.EventHandler(this.firstNameTextBox_TextChanged);
+            this.firstNameTextBox.Validating += new CancelEventHandler(this.firstNameTextBox_Validating);
             // 
             // emailTextBox
             // 
@@ -119,8 +123,8 @@
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(333, 46);
             this.emailTextBox.TabIndex = 37;
-            this.emailTextBox.Leave += new System.EventHandler(this.emailTextBox_Leave);
             this.emailTextBox.TextChanged += new System.EventHandler(this.emailTextBox_TextChanged);
+            this.emailTextBox.Validating += new CancelEventHandler(this.emailTextBox_Validating);
             // 
             // passwordTextBox
             // 
@@ -130,8 +134,18 @@
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(333, 46);
             this.passwordTextBox.TabIndex = 38;
-            this.passwordTextBox.Leave += new System.EventHandler(this.passwordTextBox_Leave);
             this.passwordTextBox.TextChanged += new System.EventHandler(this.passwordTextBox_TextChanged);
+            this.passwordTextBox.Validating += new CancelEventHandler(this.passwordTextBox_Validating);
+            // 
+            // returnButton
+            // 
+            this.returnButton.Location = new System.Drawing.Point(31, 13);
+            this.returnButton.Name = "returnButton";
+            this.returnButton.Size = new System.Drawing.Size(129, 27);
+            this.returnButton.TabIndex = 39;
+            this.returnButton.Text = "Повернутися";
+            this.returnButton.UseVisualStyleBackColor = true;
+            this.returnButton.Click += new System.EventHandler(this.returnButton_Click);
             // 
             // RegistrationForm
             // 
@@ -139,6 +153,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(144)))), ((int)(((byte)(178)))));
             this.ClientSize = new System.Drawing.Size(1200, 675);
+            this.Controls.Add(this.returnButton);
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.emailTextBox);
             this.Controls.Add(this.firstNameTextBox);
@@ -149,6 +164,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.FirstName);
             this.Name = "RegistrationForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -165,5 +181,6 @@
         private System.Windows.Forms.TextBox firstNameTextBox;
         private System.Windows.Forms.TextBox emailTextBox;
         private System.Windows.Forms.TextBox passwordTextBox;
+        private System.Windows.Forms.Button returnButton;
     }
 }

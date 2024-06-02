@@ -11,45 +11,49 @@ namespace Project
 {
     public class Order
     {
-        private Flights flight;
+        private Flight flight;
         private int numSeats;
-        private int totalPrice;
+        private double totalPrice;
         private string infoOrder;
         private string seatClass;
         private int handB;
         private int registratedB;
-        private bool state;
-        private Timer orderTimer;
-        
+        private DateTime date;
+        //private bool state;
+        //private Timer orderTimer;
 
-        public Flights Flight { get; set; }
-        public int NumSeats { get; set; }
-        public double TotalPrice { get; set; }
-        public string InfoOrder { get { return infoOrder; } private set {} }
-        public int HandB { get; set; }
-        public int RegistrationB { get; set; }
-        public string SeatClass { get; set; }
-        public bool State { get; set; }
-        public Timer OrderTimer { get; set; }
+        //
+        public Flight Flight { get { return flight; } set { flight = value; } }
+        public int NumSeats { get { return numSeats; } set { numSeats = value; } }
+        public double TotalPrice { get { return totalPrice; } set { totalPrice = value; } }
+        public string InfoOrder { get { return infoOrder; } private set { infoOrder = value; } }
+        public int HandB { get { return handB; } set { handB = value; } }
+        public int RegistratedB { get { return registratedB; } set { registratedB = value; } }
+        public string SeatClass { get { return seatClass; } set { seatClass = value; } }
+        public DateTime Date { get; set; }
+        //public bool State { get; set; }
+        //public Timer OrderTimer { get; set; }
 
-        public Order(User user,Flights flight, int numSeats, string seatClass, int handB, int registratedB)
+        public Order(Flight flight, int numSeats, string seatClass, int handB, int registratedB)
         {
             this.flight = flight;
             this.handB = handB;
             this.registratedB = registratedB;
-            this.NumSeats = numSeats;
-            //flight.NumberOfAvailableSeats -= numSeats;  
-            this.CountTotalPrice();
-            this.infoOrder = $"Місто відправлення:{flight.DepartureCity}\nМісто прибуття:{flight.DestinationCity} \nМісто пересадки:{flight.IntermediateLandingPoint}\nНомер рейсу:{flight.Id}  \nДата:{flight.DateTime} \nТривалість:{flight.FlightDuration} \nАвіакомпанія:{flight.Carrier}\nКлас:{seatClass} \nКількість замовлених місць:{NumSeats} \nЗагальна сума замовлення:{totalPrice}";
-            user.HistoryOfOrders.Add(this);
+            this.numSeats = numSeats;
+            this.seatClass = seatClass;
+            this.date = DateTime.Now;
+            this.totalPrice = CountTotalPrice();
+            this.infoOrder = $"Місто відправлення:{flight.DepartureCity}\nМісто прибуття:{flight.DestinationCity} \nМісто пересадки:{flight.IntermediateLandingPoint}\nНомер рейсу:{flight.Id}  \nДата:{flight.DateTime} \nТривалість:{flight.FlightDuration} \nАвіакомпанія:{flight.Carrier}\nКлас:{seatClass} \nКількість замовлених місць:{NumSeats} \nЗагальна сума замовлення:{TotalPrice}";
+           
+            
         }
-        // user.unpaidUserOrders.Add(this);
+        // user.unpaidUserOrders.Add();
 
    
-        public  int  CountTotalPrice()
+        public  double CountTotalPrice()
         {
-            var res = ((double)numSeats * Convert.ToDouble(flight.Price)) + (Convert.ToDouble(flight.Price)* Convert.ToDouble(handB * 0.25 + registratedB * 1.5));
-            switch(seatClass)
+            double res = (numSeats * flight.Price) + (flight.Price * (handB * 0.25 + registratedB * 1.5));
+            switch (seatClass)
             {
                 case "econom":
                     flight.SeatsEconom -= numSeats;
@@ -63,12 +67,13 @@ namespace Project
                     flight.SeatsFirst -= numSeats;
                     break;
             }
-            totalPrice = (int)Math.Round(res);
+            flight.NumberOfAvailableSeats -= numSeats;
+            totalPrice = Math.Round(res);
             return totalPrice;
+
             
-                //fligth.NumberOfAvailableSeats -= numSeats;
-                //user.HistoryOfOrders.Add(infoOrder);
-            }
+        
+        }
           
         }
     //public static bool PayOrder(Order order, User user)

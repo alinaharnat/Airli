@@ -40,21 +40,7 @@ namespace Project
             }
             try
             {
-                var condition = @"^[А-ЯҐЄІЇ][а-яґєії]*$";
-                var reg = new Regex(condition);
-                return reg.IsMatch(text);
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
-        public static bool ValidateNumber(string text)
-        {
-            try
-            {
-                var value = Convert.ToInt32(text);
-                var condition = @"^\d+$";
+                var condition = @"^[А-ЯҐЄІЇ][а-яґєіїa]*$";
                 var reg = new Regex(condition);
                 return reg.IsMatch(text);
             }

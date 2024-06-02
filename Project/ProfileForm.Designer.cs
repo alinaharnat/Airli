@@ -38,12 +38,15 @@ namespace Project
             this.saveChangesButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.returnButton = new System.Windows.Forms.Button();
+            this.SaveButton = new System.Windows.Forms.Button();
             this.ShowHistoryButton = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             this.destinationCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Flight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.seatClass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numSeats = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -115,7 +118,7 @@ namespace Project
             this.panel1.Controls.Add(this.curUserPassword);
             this.panel1.Controls.Add(this.curUserLastName);
             this.panel1.Controls.Add(this.curUserEmail);
-            this.panel1.Location = new System.Drawing.Point(24, 61);
+            this.panel1.Location = new System.Drawing.Point(24, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(386, 509);
             this.panel1.TabIndex = 6;
@@ -130,33 +133,21 @@ namespace Project
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
-            // button1
+            // SaveButton
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(100, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(197, 28);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Історія замовлень";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // returnButton
-            // 
-            this.returnButton.Location = new System.Drawing.Point(3, 2);
-            this.returnButton.Name = "returnButton";
-            this.returnButton.Size = new System.Drawing.Size(61, 37);
-            this.returnButton.TabIndex = 8;
-            this.returnButton.UseVisualStyleBackColor = true;
-            this.returnButton.Click += new System.EventHandler(this.returnButton_Click);
+            this.SaveButton.Location = new System.Drawing.Point(987, 469);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(149, 37);
+            this.SaveButton.TabIndex = 8;
+            this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveButton.Click += new System.EventHandler(this.returnButton_Click);
             // 
             // ShowHistoryButton
             // 
             this.ShowHistoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ShowHistoryButton.FlatAppearance.BorderSize = 0;
             this.ShowHistoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ShowHistoryButton.Location = new System.Drawing.Point(431, 293);
+            this.ShowHistoryButton.Location = new System.Drawing.Point(426, 12);
             this.ShowHistoryButton.Name = "ShowHistoryButton";
             this.ShowHistoryButton.Size = new System.Drawing.Size(197, 40);
             this.ShowHistoryButton.TabIndex = 9;
@@ -168,18 +159,32 @@ namespace Project
             // 
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.destinationCity,
+            this.Flight,
+            this.seatClass,
+            this.numSeats,
             this.totalPrice});
-            this.dataGridView.Location = new System.Drawing.Point(431, 61);
+            this.dataGridView.GridColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dataGridView.Location = new System.Drawing.Point(426, 72);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersWidth = 62;
             this.dataGridView.RowTemplate.Height = 28;
-            this.dataGridView.Size = new System.Drawing.Size(687, 215);
+            this.dataGridView.Size = new System.Drawing.Size(710, 374);
             this.dataGridView.TabIndex = 10;
-            this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(987, 542);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(149, 37);
+            this.button1.TabIndex = 11;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // destinationCity
             // 
@@ -190,9 +195,36 @@ namespace Project
             this.destinationCity.ReadOnly = true;
             this.destinationCity.Width = 150;
             // 
+            // Flight
+            // 
+            this.Flight.DataPropertyName = "DepartureCity";
+            this.Flight.HeaderText = "Рейс";
+            this.Flight.MinimumWidth = 8;
+            this.Flight.Name = "Flight";
+            this.Flight.ReadOnly = true;
+            this.Flight.Width = 150;
+            // 
+            // seatClass
+            // 
+            this.seatClass.DataPropertyName = "seatClass";
+            this.seatClass.HeaderText = "Клас";
+            this.seatClass.MinimumWidth = 8;
+            this.seatClass.Name = "seatClass";
+            this.seatClass.ReadOnly = true;
+            this.seatClass.Width = 150;
+            // 
+            // numSeats
+            // 
+            this.numSeats.DataPropertyName = "numSeats";
+            this.numSeats.HeaderText = "Кількість місць";
+            this.numSeats.MinimumWidth = 8;
+            this.numSeats.Name = "numSeats";
+            this.numSeats.ReadOnly = true;
+            this.numSeats.Width = 150;
+            // 
             // totalPrice
             // 
-            this.totalPrice.DataPropertyName = "TotalPrice";
+            this.totalPrice.DataPropertyName = "totalPrice";
             this.totalPrice.HeaderText = "Загальна вартість";
             this.totalPrice.MinimumWidth = 8;
             this.totalPrice.Name = "totalPrice";
@@ -205,14 +237,16 @@ namespace Project
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1148, 591);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.ShowHistoryButton);
-            this.Controls.Add(this.returnButton);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.panel1);
             this.MinimumSize = new System.Drawing.Size(1170, 647);
             this.Name = "ProfileForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProfileForm";
+            this.Load += new System.EventHandler(this.ProfileForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -230,12 +264,15 @@ namespace Project
         private System.Windows.Forms.Button saveChangesButton;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button returnButton;
+        private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Button ShowHistoryButton;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.DataGridView dataGridView;
+        private Button button1;
         private DataGridViewTextBoxColumn destinationCity;
+        private DataGridViewTextBoxColumn Flight;
+        private DataGridViewTextBoxColumn seatClass;
+        private DataGridViewTextBoxColumn numSeats;
         private DataGridViewTextBoxColumn totalPrice;
     }
 }
