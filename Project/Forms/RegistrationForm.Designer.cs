@@ -96,24 +96,24 @@ namespace Project
             // lastNameTextBox
             // 
             this.lastNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.lastNameTextBox.Location = new System.Drawing.Point(436, 164);
+            this.lastNameTextBox.Location = new System.Drawing.Point(436, 236);
             this.lastNameTextBox.Multiline = true;
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(333, 46);
             this.lastNameTextBox.TabIndex = 35;
             this.lastNameTextBox.TextChanged += new System.EventHandler(this.lastNameTextBox_TextChanged);
-            this.lastNameTextBox.Validating += new CancelEventHandler(this.lastNameTextBox_Validating);
+            this.lastNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.lastNameTextBox_Validating);
             // 
             // firstNameTextBox
             // 
             this.firstNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.firstNameTextBox.Location = new System.Drawing.Point(436, 237);
+            this.firstNameTextBox.Location = new System.Drawing.Point(436, 164);
             this.firstNameTextBox.Multiline = true;
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(333, 46);
             this.firstNameTextBox.TabIndex = 36;
             this.firstNameTextBox.TextChanged += new System.EventHandler(this.firstNameTextBox_TextChanged);
-            this.firstNameTextBox.Validating += new CancelEventHandler(this.firstNameTextBox_Validating);
+            this.firstNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.firstNameTextBox_Validating);
             // 
             // emailTextBox
             // 
@@ -124,7 +124,7 @@ namespace Project
             this.emailTextBox.Size = new System.Drawing.Size(333, 46);
             this.emailTextBox.TabIndex = 37;
             this.emailTextBox.TextChanged += new System.EventHandler(this.emailTextBox_TextChanged);
-            this.emailTextBox.Validating += new CancelEventHandler(this.emailTextBox_Validating);
+            this.emailTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.emailTextBox_Validating);
             // 
             // passwordTextBox
             // 
@@ -135,15 +135,15 @@ namespace Project
             this.passwordTextBox.Size = new System.Drawing.Size(333, 46);
             this.passwordTextBox.TabIndex = 38;
             this.passwordTextBox.TextChanged += new System.EventHandler(this.passwordTextBox_TextChanged);
-            this.passwordTextBox.Validating += new CancelEventHandler(this.passwordTextBox_Validating);
+            this.passwordTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.passwordTextBox_Validating);
             // 
             // returnButton
             // 
             this.returnButton.Location = new System.Drawing.Point(31, 13);
             this.returnButton.Name = "returnButton";
-            this.returnButton.Size = new System.Drawing.Size(129, 27);
+            this.returnButton.Size = new System.Drawing.Size(129, 46);
             this.returnButton.TabIndex = 39;
-            this.returnButton.Text = "Повернутися";
+            this.returnButton.Text = "Назад";
             this.returnButton.UseVisualStyleBackColor = true;
             this.returnButton.Click += new System.EventHandler(this.returnButton_Click);
             // 
@@ -165,7 +165,7 @@ namespace Project
             this.Controls.Add(this.FirstName);
             this.Name = "RegistrationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form2";
+            this.Text = "Сторінка реєстрації";
             this.ResumeLayout(false);
             this.PerformLayout();
 

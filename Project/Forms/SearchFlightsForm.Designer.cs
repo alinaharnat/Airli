@@ -386,6 +386,7 @@ namespace Project
             this.MinimumSize = new System.Drawing.Size(1170, 647);
             this.Name = "SearchFlightsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Сторінка пошуку";
             this.Load += new System.EventHandler(this.SearchFlightsForm_Load);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

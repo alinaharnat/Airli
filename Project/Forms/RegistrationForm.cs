@@ -13,17 +13,18 @@ namespace Project
 {
     public partial class RegistrationForm : Form
     {
-        Users users = new Users();
-        public RegistrationForm()
+        private Users users;
+        public RegistrationForm(Users allUsers)
         {
+            users = allUsers;
             InitializeComponent();
         }
 
-        string path = @"C:\\Users\\alina\\OneDrive\\Робочий стіл\\Project C#\\Project\\Project\\InformationAboutUsers.json";
-        //string path = @"C:\Users\alina\OneDrive\Робочий стіл\Project C#\Project\Project\UsersInfo.json";
+        string path = @"C:\Users\alina\OneDr*/ive\Робочий стіл\Project C#\Project\Project\DataSources\InformationAboutUsers.json";
+
         private void registrationButton_Click(object sender, EventArgs e)
         {
-            users = users.LoadUsersData(path);
+            //users = users.LoadUsersData(path);
 
             var lastName = lastNameTextBox.Text;
             var firstName = firstNameTextBox.Text;
@@ -55,7 +56,7 @@ namespace Project
                     users.AddUser(user,path);
                     //users.SaveUsersData(path);
                     Hide();
-                    var form = new SearchFlightsForm(user);
+                    var form = new SearchFlightsForm(user, users);
                     form.Show();
                 }
                    

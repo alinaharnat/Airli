@@ -18,10 +18,6 @@ namespace Project
         private string lastName;
         private string email;
         private string password;
-
-        
-
-        //public List<Order> unpaidUserOrders = new List<Order>();
        
         public string FirstName { get { return firstName; } set { firstName = value; } }
         public string LastName { get { return lastName; } set { lastName = value; } }
@@ -32,7 +28,7 @@ namespace Project
 
         public User()
         {
-
+            HistoryOfOrders = new List<Order>();
         }
         public User(string email, string password, string lastName,string firstName)
         {

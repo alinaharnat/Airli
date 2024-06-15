@@ -85,8 +85,8 @@
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(333, 46);
             this.passwordTextBox.TabIndex = 26;
-            this.passwordTextBox.Leave += new System.EventHandler(this.passwordTextBox_Leave);
             this.passwordTextBox.TextChanged += new System.EventHandler(this.passwordTextBox_TextChanged);
+            this.passwordTextBox.Leave += new System.EventHandler(this.passwordTextBox_Leave);
             // 
             // emailTextBox
             // 
@@ -97,8 +97,8 @@
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(333, 46);
             this.emailTextBox.TabIndex = 25;
-            this.emailTextBox.Leave += new System.EventHandler(this.emailTextBox_Leave);
             this.emailTextBox.TextChanged += new System.EventHandler(this.emailTextBox_TextChanged);
+            this.emailTextBox.Leave += new System.EventHandler(this.emailTextBox_Leave);
             // 
             // logInButton
             // 
@@ -129,6 +129,7 @@
             this.Controls.Add(this.emailTextBox);
             this.Controls.Add(this.logInButton);
             this.Name = "LogInForm";
+            this.Text = "Сторінка аутентифікації";
             this.ResumeLayout(false);
             this.PerformLayout();
 

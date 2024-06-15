@@ -18,6 +18,7 @@ namespace Project
     public partial class SearchFlightsForm : Form
     {
         Flights flights = new Flights();
+        private Users users;
         private User currentUser;
         public SearchFlightsForm()
         {
@@ -25,15 +26,16 @@ namespace Project
             dataGridView.AutoGenerateColumns = false;
 
         }
-        public SearchFlightsForm(User user)
+        public SearchFlightsForm(User user, Users allUsers)
         {
+            users = allUsers;
             currentUser = user;
             InitializeComponent();
             dataGridView.AutoGenerateColumns = false;
 
 
         }
-        string path = @"C:\Users\alina\OneDrive\Робочий стіл\Project C#\Project\Project\AvaliableFlights.json";
+        string path = @"C:\Users\alina\OneDrive\Робочий стіл\Project C#\Project\Project\DataSources\AvaliableFlights.json";
         List<Flight> listFlights = new List<Flight>();
         private void SearchButton_Click(object sender, EventArgs e)
         {
@@ -106,7 +108,7 @@ namespace Project
         private void profileButton_Click(object sender, EventArgs e)
         {
             Hide();
-            var form = new ProfileForm(currentUser);
+            var form = new ProfileForm(currentUser, users);
             form.Show();
         }
 
@@ -119,7 +121,7 @@ namespace Project
                 DataGridViewRow selectedRow = dataGridView.Rows[e.RowIndex];
                 var selectedIteam = (Flight)selectedRow.DataBoundItem;
                 this.Hide();
-                var form = new BuyTicketForm(selectedIteam, currentUser);
+                var form = new BuyTicketForm(selectedIteam, currentUser, users, flights);
                 form.Show();
             }
         }

@@ -19,10 +19,7 @@ namespace Project
         private int handB;
         private int registratedB;
         private DateTime date;
-        //private bool state;
-        //private Timer orderTimer;
-
-        //
+      
         public Flight Flight { get { return flight; } set { flight = value; } }
         public int NumSeats { get { return numSeats; } set { numSeats = value; } }
         public double TotalPrice { get { return totalPrice; } set { totalPrice = value; } }
@@ -31,24 +28,21 @@ namespace Project
         public int RegistratedB { get { return registratedB; } set { registratedB = value; } }
         public string SeatClass { get { return seatClass; } set { seatClass = value; } }
         public DateTime Date { get; set; }
-        //public bool State { get; set; }
-        //public Timer OrderTimer { get; set; }
+       
 
-        public Order(Flight flight, int numSeats, string seatClass, int handB, int registratedB)
+        public Order(Flight flight, int numSeats, string seatClass, int handB, int registratedB, DateTime date)
         {
             this.flight = flight;
             this.handB = handB;
             this.registratedB = registratedB;
             this.numSeats = numSeats;
             this.seatClass = seatClass;
-            this.date = DateTime.Now;
+            Date = date;
             this.totalPrice = CountTotalPrice();
             this.infoOrder = $"Місто відправлення:{flight.DepartureCity}\nМісто прибуття:{flight.DestinationCity} \nМісто пересадки:{flight.IntermediateLandingPoint}\nНомер рейсу:{flight.Id}  \nДата:{flight.DateTime} \nТривалість:{flight.FlightDuration} \nАвіакомпанія:{flight.Carrier}\nКлас:{seatClass} \nКількість замовлених місць:{NumSeats} \nЗагальна сума замовлення:{TotalPrice}";
            
             
         }
-        // user.unpaidUserOrders.Add();
-
    
         public  double CountTotalPrice()
         {
@@ -76,9 +70,5 @@ namespace Project
         }
           
         }
-    //public static bool PayOrder(Order order, User user)
-    //{
-
-    //}
 
     }

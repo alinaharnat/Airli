@@ -1,6 +1,6 @@
 ﻿namespace Project
 {
-    partial class AddFlightsForm
+    partial class EditFlightsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -88,6 +88,8 @@
             this.departureCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.FinshEditingutton = new System.Windows.Forms.Button();
+            this.SaveButton = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
             panel2 = new System.Windows.Forms.Panel();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.searchIdUpDown)).BeginInit();
@@ -99,6 +101,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.idUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -118,9 +121,9 @@
             panel2.Controls.Add(this.label15);
             panel2.Controls.Add(this.label16);
             panel2.Controls.Add(this.menuStrip2);
-            panel2.Location = new System.Drawing.Point(597, 105);
+            panel2.Location = new System.Drawing.Point(18, 71);
             panel2.Name = "panel2";
-            panel2.Size = new System.Drawing.Size(778, 173);
+            panel2.Size = new System.Drawing.Size(776, 173);
             panel2.TabIndex = 32;
             // 
             // label13
@@ -259,30 +262,35 @@
             this.sortPriceUp.Name = "sortPriceUp";
             this.sortPriceUp.Size = new System.Drawing.Size(431, 34);
             this.sortPriceUp.Text = "за збільшенням ціни";
+            this.sortPriceUp.Click += new System.EventHandler(this.sortPriceUp_Click);
             // 
             // sortPriceDown
             // 
             this.sortPriceDown.Name = "sortPriceDown";
             this.sortPriceDown.Size = new System.Drawing.Size(431, 34);
             this.sortPriceDown.Text = "за зменшенням ціни";
+            this.sortPriceDown.Click += new System.EventHandler(this.sortPriceDown_Click);
             // 
             // numberOfSeatsUp
             // 
             this.numberOfSeatsUp.Name = "numberOfSeatsUp";
             this.numberOfSeatsUp.Size = new System.Drawing.Size(431, 34);
             this.numberOfSeatsUp.Text = "за збільшенням кількості вільних місць";
+            this.numberOfSeatsUp.Click += new System.EventHandler(this.numberOfSeatsUp_Click);
             // 
             // numberOtSeatsDown
             // 
             this.numberOtSeatsDown.Name = "numberOtSeatsDown";
             this.numberOtSeatsDown.Size = new System.Drawing.Size(431, 34);
             this.numberOtSeatsDown.Text = "за зменшенням кількості вільних місць";
+            this.numberOtSeatsDown.Click += new System.EventHandler(this.numberOtSeatsDown_Click);
             // 
             // dateSortButton
             // 
             this.dateSortButton.Name = "dateSortButton";
             this.dateSortButton.Size = new System.Drawing.Size(431, 34);
             this.dateSortButton.Text = "за датою";
+            this.dateSortButton.Click += new System.EventHandler(this.dateSortButton_Click);
             // 
             // DepartureCityBox
             // 
@@ -458,14 +466,14 @@
             // 
             // flightTimePicker
             // 
-            this.flightTimePicker.CustomFormat = "HH:mm:ss";
+            this.flightTimePicker.CustomFormat = "HH:mm";
             this.flightTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.flightTimePicker.Location = new System.Drawing.Point(225, 202);
             this.flightTimePicker.Name = "flightTimePicker";
             this.flightTimePicker.ShowUpDown = true;
             this.flightTimePicker.Size = new System.Drawing.Size(95, 26);
             this.flightTimePicker.TabIndex = 22;
-            this.flightTimePicker.Value = new System.DateTime(2024, 6, 1, 8, 36, 44, 0);
+            this.flightTimePicker.Value = new System.DateTime(2024, 6, 1, 0, 0, 0, 0);
             // 
             // label3
             // 
@@ -554,14 +562,14 @@
             // 
             // TimePicker
             // 
-            this.TimePicker.CustomFormat = "HH:mm:ss";
+            this.TimePicker.CustomFormat = "HH:mm";
             this.TimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.TimePicker.Location = new System.Drawing.Point(19, 438);
             this.TimePicker.Name = "TimePicker";
             this.TimePicker.ShowUpDown = true;
             this.TimePicker.Size = new System.Drawing.Size(200, 26);
             this.TimePicker.TabIndex = 13;
-            this.TimePicker.Value = new System.DateTime(2024, 6, 1, 8, 36, 44, 0);
+            this.TimePicker.Value = new System.DateTime(2024, 6, 1, 0, 0, 0, 0);
             // 
             // priceUpDown
             // 
@@ -577,7 +585,7 @@
             // 
             // datePicker
             // 
-            this.datePicker.CustomFormat = "yyyy-MM-ddTHH:mm:ss";
+            this.datePicker.CustomFormat = "yyyy-MM-dd";
             this.datePicker.Location = new System.Drawing.Point(19, 202);
             this.datePicker.Name = "datePicker";
             this.datePicker.Size = new System.Drawing.Size(200, 26);
@@ -586,7 +594,7 @@
             // 
             // RemoveInvalidFlightsButton
             // 
-            this.RemoveInvalidFlightsButton.Location = new System.Drawing.Point(859, 26);
+            this.RemoveInvalidFlightsButton.Location = new System.Drawing.Point(298, 4);
             this.RemoveInvalidFlightsButton.Name = "RemoveInvalidFlightsButton";
             this.RemoveInvalidFlightsButton.Size = new System.Drawing.Size(232, 62);
             this.RemoveInvalidFlightsButton.TabIndex = 32;
@@ -596,7 +604,7 @@
             // 
             // EditFlightsButton
             // 
-            this.EditFlightsButton.Location = new System.Drawing.Point(596, 26);
+            this.EditFlightsButton.Location = new System.Drawing.Point(18, 3);
             this.EditFlightsButton.Name = "EditFlightsButton";
             this.EditFlightsButton.Size = new System.Drawing.Size(232, 65);
             this.EditFlightsButton.TabIndex = 33;
@@ -699,7 +707,7 @@
             this.price,
             this.numberOfAvailableSeats});
             this.dataGridView.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridView.Location = new System.Drawing.Point(596, 284);
+            this.dataGridView.Location = new System.Drawing.Point(18, 250);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -723,27 +731,52 @@
             this.FinshEditingutton.FlatAppearance.BorderSize = 0;
             this.FinshEditingutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FinshEditingutton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.FinshEditingutton.Location = new System.Drawing.Point(1151, 563);
+            this.FinshEditingutton.Location = new System.Drawing.Point(550, 6);
             this.FinshEditingutton.Name = "FinshEditingutton";
-            this.FinshEditingutton.Size = new System.Drawing.Size(221, 43);
+            this.FinshEditingutton.Size = new System.Drawing.Size(243, 56);
             this.FinshEditingutton.TabIndex = 35;
             this.FinshEditingutton.Text = "Закінчити редагування";
             this.FinshEditingutton.UseVisualStyleBackColor = false;
             this.FinshEditingutton.Click += new System.EventHandler(this.FinshEditingutton_Click);
             // 
-            // AddFlightsForm
+            // SaveButton
+            // 
+            this.SaveButton.BackColor = System.Drawing.Color.White;
+            this.SaveButton.FlatAppearance.BorderSize = 0;
+            this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SaveButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.SaveButton.Location = new System.Drawing.Point(549, 513);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(243, 56);
+            this.SaveButton.TabIndex = 36;
+            this.SaveButton.Text = "Зберегти результати пошуку";
+            this.SaveButton.UseVisualStyleBackColor = false;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.SaveButton);
+            this.panel3.Controls.Add(this.FinshEditingutton);
+            this.panel3.Controls.Add(this.dataGridView);
+            this.panel3.Controls.Add(this.RemoveInvalidFlightsButton);
+            this.panel3.Controls.Add(this.EditFlightsButton);
+            this.panel3.Controls.Add(panel2);
+            this.panel3.Location = new System.Drawing.Point(586, 21);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(819, 598);
+            this.panel3.TabIndex = 37;
+            // 
+            // EditFlightsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1442, 641);
-            this.Controls.Add(this.FinshEditingutton);
-            this.Controls.Add(this.EditFlightsButton);
-            this.Controls.Add(this.dataGridView);
-            this.Controls.Add(panel2);
-            this.Controls.Add(this.RemoveInvalidFlightsButton);
+            this.ClientSize = new System.Drawing.Size(1523, 707);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
-            this.Name = "AddFlightsForm";
-            this.Text = "AddFlightsForm";
+            this.MaximumSize = new System.Drawing.Size(1800, 800);
+            this.MinimumSize = new System.Drawing.Size(1545, 763);
+            this.Name = "EditFlightsForm";
+            this.Text = "Сторінка редагування";
             this.Load += new System.EventHandler(this.AddFlightsForm_Load);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
@@ -758,6 +791,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.idUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -822,5 +856,7 @@
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Button FinshEditingutton;
         private System.Windows.Forms.Button DeleteButton;
+        private System.Windows.Forms.Button SaveButton;
+        private System.Windows.Forms.Panel panel3;
     }
 }

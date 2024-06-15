@@ -14,7 +14,7 @@ namespace Project
 {
     public partial class ProfileForm : Form
     {
-        Users users = new Users();
+       private  Users users ;
         Flights flights = new Flights();
 
         private User currentUser;
@@ -26,8 +26,9 @@ namespace Project
             dataGridView.AutoGenerateColumns = false;
 
         }
-        public ProfileForm(User user)
+        public ProfileForm(User user, Users allUsers)
         {
+            users = allUsers;
             CurrentUser = user;
             InitializeComponent();
             ShowUserInfo();
@@ -44,7 +45,7 @@ namespace Project
 
         private void saveChangesButton_Click(object sender, EventArgs e)
         {
-            users = users.LoadUsersData(path);
+           
             if (!users.ChangeUserInformation(currentUser, currentUser.Email, curUserPassword.Text, curUserLastName.Text, curUserFirstName.Text, path))
             {
                 ShowUserInfo();
@@ -76,7 +77,7 @@ namespace Project
         private void returnButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var form = new SearchFlightsForm(currentUser);
+            var form = new SearchFlightsForm(currentUser, users);
             form.Show();
         }
 
@@ -93,75 +94,59 @@ namespace Project
         private void ProfileForm_Load(object sender, EventArgs e)
         {
             dataGridView.Hide();
-            SaveButton.Hide();
+           
         }
 
         private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            SaveButton.Show();
-            SaveTextFile(dataGridView);
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = dataGridView.Rows[e.RowIndex];
+                var selectedIteam = (Order)selectedRow.DataBoundItem;
+
+                SaveTextFile(selectedIteam.InfoOrder);
+            }
+           
 
         }
-        //saving to file
-        public void SaveDataGridViewToTextFile(DataGridView dataGV, string filename)
+        private void SaveTextFile(string infoOrder)
         {
-            try
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
-                using (StreamWriter sw = new StreamWriter(filename))
-                {
-                    
-                    for (int i = 0; i < dataGV.Columns.Count; i++)
-                    {
-                        sw.Write(dataGV.Columns[i].HeaderText);
-                        if (i < dataGV.Columns.Count - 1)
-                        {
-                            sw.Write("     "); 
-                        }
-                    }
-                    sw.WriteLine();
+                saveFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+                saveFileDialog.Title = "Зберегти інформацію про бронювання";
+                saveFileDialog.FileName = "Ticket.txt";
 
-                    
-                    for (int i = 0; i < dataGV.Rows.Count; i++)
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = saveFileDialog.FileName;
+
+                    try
                     {
-                        for (int j = 0; j < dataGV.Columns.Count; j++)
-                        {
-                            sw.Write(dataGV.Rows[i].Cells[j].Value?.ToString());
-                            if (j < dataGV.Columns.Count - 1)
-                            {
-                                sw.Write("\t");
-                            }
-                        }
-                        sw.WriteLine();
+                       
+                        File.WriteAllText(filePath, infoOrder);
+
+                        MessageBox.Show("Інформація успішно збережена.", "Збереження файлу", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Виникла помилка.");
                     }
                 }
-
-                MessageBox.Show("Дані збережено успішно!", "Збереження", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Помилка при збереженні даних: " + ex.Message, "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        //
-        public void SaveTextFile(DataGridView dgv)
-        {
-            using (SaveFileDialog sfd = new SaveFileDialog())
-            {
-                sfd.Filter = "Текстові файли (*.txt)|*.txt|Всі файли (*.*)|*.*";
-                sfd.FileName = "data.txt";
 
-                if (sfd.ShowDialog() == DialogResult.OK)
-                {
-                    SaveDataGridViewToTextFile(dgv, sfd.FileName);
-                }
-            }
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
-            var form = new SearchFlightsForm(currentUser);
+            var form = new SearchFlightsForm(currentUser,users);
             form.Show();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -17,8 +17,8 @@ namespace Project
 {
     public partial class BuyTicketForm : Form
     {
-        Flights flights = new Flights();
-        Users users = new Users();
+        private Flights flights;
+        private Users users;
 
         private  Flight curFlight;
         private User curUser;
@@ -28,14 +28,16 @@ namespace Project
         {
             InitializeComponent();
         }
-        public BuyTicketForm(Flight flight, User user)
+        public BuyTicketForm(Flight flight, User user, Users allUsers, Flights allFlights)
         {
+            users = allUsers;
+            flights = allFlights;
             InitializeComponent();
             curFlight = flight;
             curUser = user;
         }
-        string path = @"C:\Users\alina\OneDrive\Робочий стіл\Project C#\Project\Project\AvaliableFlights.json";
-        string pathUser = @"C:\Users\alina\OneDrive\Робочий стіл\Project C#\Project\Project\InformationAboutUsers.json";
+        string path = @"C:\Users\alina\OneDrive\Робочий стіл\Project C#\Project\Project\DataSources\AvaliableFlights.json";
+        string pathUser = @"C:\Users\alina\OneDrive\Робочий стіл\Project C#\Project\Project\DataSources\InformationAboutUsers.json";
         private void BuyTichetForm_Load(object sender, EventArgs e)
         {
             curFlightInfo.Text = curFlight.GetInfoAboutFlight();
@@ -49,8 +51,7 @@ namespace Project
 
         private void BuyButton_Click(object sender, EventArgs e)
         {
-            flights = flights.GetAvailableFlights(path);
-            users = users.LoadUsersData(pathUser);
+           
 
             if(GetCheckedSeatType() == "null")
             {
@@ -66,8 +67,8 @@ namespace Project
                 int seats = (int)numSeatsUpDown.Value; 
                 int numHB = (int)numHBUpDown.Value;
                 int numRB =(int)numRBUpDown.Value; ;
-               
-                var order = new Order(curFlight, seats, GetCheckedSeatType(), numHB, numRB);
+                var date = DateTime.Now;
+                var order = new Order(curFlight, seats, GetCheckedSeatType(), numHB, numRB, date);
                 
                 
                 flights.UpdateInfo(curFlight, path);
@@ -78,7 +79,7 @@ namespace Project
                 curFlightInfo.Text = curFlight.GetInfoAboutFlight();
                 buyPanel1.Hide();
                 
-                messageLabel.Text = $"Замовлення успішно сформовано!\nЗагальна вартість замовлення:{order.TotalPrice}";
+                messageLabel.Text = $"Успішно заброньовано!\nЗагальна вартість:{order.TotalPrice}";
 
 
 
@@ -241,7 +242,7 @@ namespace Project
         {
             
                 this.Close();
-                var form = new SearchFlightsForm(curUser);
+                var form = new SearchFlightsForm(curUser, users);
                 form.Show();
             
             

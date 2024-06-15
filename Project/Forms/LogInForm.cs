@@ -22,11 +22,11 @@ namespace Project
         }
         
 
-        string path = @"C:\\Users\\alina\\OneDrive\\Робочий стіл\\Project C#\\Project\\Project\\InformationAboutUsers.json";
+        string path = @"C:\Users\alina\OneDrive\Робочий стіл\Project C#\Project\Project\DataSources\InformationAboutUsers.json";
         private void label5_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var form = new RegistrationForm();
+            var form = new RegistrationForm(users);
             form.Show();
         }
 
@@ -36,10 +36,10 @@ namespace Project
             var email = emailTextBox.Text;
             var password = passwordTextBox.Text;
 
-            if(email == "alina@gmail.com"&& password == "12345678")
+            if(email == "admin@gmail.com"&& password == "12345678")
             {
                 this.Hide();
-                var form = new AddFlightsForm();
+                var form = new EditFlightsForm();
                 form.Show();
             }
             else
@@ -48,7 +48,7 @@ namespace Project
                 {
                     var newUser = users.LoginUser(email, password, path);
                     Hide();
-                    var form = new SearchFlightsForm(newUser);
+                    var form = new SearchFlightsForm(newUser, users);
                     form.Show();
                 }
                 else

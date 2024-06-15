@@ -77,72 +77,63 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddFlightsForm.cs">
+    <Compile Include="Forms\EditFlightsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddFlightsForm.Designer.cs">
-      <DependentUpon>AddFlightsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BuyTichetForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BuyTichetForm.Designer.cs">
-      <DependentUpon>BuyTichetForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EditFlightsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditFlightsForm.Designer.cs">
+    <Compile Include="Forms\EditFlightsForm.Designer.cs">
       <DependentUpon>EditFlightsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Flight.cs" />
-    <Compile Include="Flights.cs" />
-    <Compile Include="LogInForm.cs">
+    <Compile Include="Forms\BookTicketForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LogInForm.Designer.cs">
+    <Compile Include="Forms\BookTicketForm.Designer.cs">
+      <DependentUpon>BookTicketForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Flight.cs" />
+    <Compile Include="Models\Flights.cs" />
+    <Compile Include="Forms\LogInForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LogInForm.Designer.cs">
       <DependentUpon>LogInForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Order.cs" />
-    <Compile Include="ProfileForm.cs">
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Forms\ProfileForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProfileForm.Designer.cs">
+    <Compile Include="Forms\ProfileForm.Designer.cs">
       <DependentUpon>ProfileForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="RegistrationForm.cs">
+    <Compile Include="Forms\RegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegistrationForm.Designer.cs">
+    <Compile Include="Forms\RegistrationForm.Designer.cs">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SearchFlightsForm.cs">
+    <Compile Include="Forms\SearchFlightsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SearchFlightsForm.Designer.cs">
+    <Compile Include="Forms\SearchFlightsForm.Designer.cs">
       <DependentUpon>SearchFlightsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="User.cs" />
-    <Compile Include="Users.cs" />
-    <Compile Include="Validation.cs" />
-    <EmbeddedResource Include="AddFlightsForm.resx">
-      <DependentUpon>AddFlightsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BuyTichetForm.resx">
-      <DependentUpon>BuyTichetForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditFlightsForm.resx">
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Users.cs" />
+    <Compile Include="Models\Validation.cs" />
+    <EmbeddedResource Include="Forms\EditFlightsForm.resx">
       <DependentUpon>EditFlightsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LogInForm.resx">
+    <EmbeddedResource Include="Forms\BookTicketForm.resx">
+      <DependentUpon>BookTicketForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LogInForm.resx">
       <DependentUpon>LogInForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProfileForm.resx">
+    <EmbeddedResource Include="Forms\ProfileForm.resx">
       <DependentUpon>ProfileForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RegistrationForm.resx">
+    <EmbeddedResource Include="Forms\RegistrationForm.resx">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -154,11 +145,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="SearchFlightsForm.resx">
+    <EmbeddedResource Include="Forms\SearchFlightsForm.resx">
       <DependentUpon>SearchFlightsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="AvaliableFlights.json" />
-    <None Include="InformationAboutUsers.json" />
+    <None Include="DataSources\AvaliableFlights.json" />
+    <None Include="DataSources\InformationAboutUsers.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -248,7 +248,7 @@
             this.BuyButton.Name = "BuyButton";
             this.BuyButton.Size = new System.Drawing.Size(185, 58);
             this.BuyButton.TabIndex = 3;
-            this.BuyButton.Text = "Придбати";
+            this.BuyButton.Text = "Забронювати";
             this.BuyButton.UseVisualStyleBackColor = true;
             this.BuyButton.Click += new System.EventHandler(this.BuyButton_Click);
             // 
@@ -265,9 +265,9 @@
             // 
             this.returnButton.Location = new System.Drawing.Point(44, 13);
             this.returnButton.Name = "returnButton";
-            this.returnButton.Size = new System.Drawing.Size(135, 30);
+            this.returnButton.Size = new System.Drawing.Size(137, 52);
             this.returnButton.TabIndex = 2;
-            this.returnButton.Text = "Повернутися";
+            this.returnButton.Text = "Назад";
             this.returnButton.UseVisualStyleBackColor = true;
             this.returnButton.Click += new System.EventHandler(this.returnButton_Click);
             // 
@@ -282,7 +282,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "BuyTicketForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "BuyTicketForm";
+            this.Text = "Сторінка бронювання";
             this.Load += new System.EventHandler(this.BuyTichetForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

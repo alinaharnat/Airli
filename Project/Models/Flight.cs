@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace Project
 {
-    [Serializable]
+   
     public class Flight
     {
-        protected string departureСity;
-        protected string destinationСity;
-        protected string intermediateLandingPoint;
-        protected DateTime dateTime;
-        protected TimeSpan flightDuration;
-        protected int id;
-        protected double price;
-        protected string carrier;
+        private string departureСity;
+        private string destinationСity;
+        private string intermediateLandingPoint;
+        private DateTime dateTime;
+        private TimeSpan flightDuration;
+        private int id;
+        private double price;
+        private string carrier;
         private int numberOfAvailableSeats;
         private int seatsEconom;
         private int seatsBuisiness;

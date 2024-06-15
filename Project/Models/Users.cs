@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using System.IO;
 using System.Windows.Forms;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 
 
 
@@ -23,8 +25,13 @@ namespace Project
         
         public void SaveUsersData(string path)
         {
-           
-                var jsonStr = JsonSerializer.Serialize(this);
+
+            var options = new JsonSerializerOptions
+            {
+                Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
+                WriteIndented = true
+            };
+            var jsonStr = JsonSerializer.Serialize(this,options);
                 File.WriteAllText(path, jsonStr);
            
         }
@@ -35,8 +42,7 @@ namespace Project
             return JsonSerializer.Deserialize<Users>(jsonStr);
         }
 
-        //Searching user
-        //
+      
         public bool CheckEmail(string email, string path)
         {
             foreach (var user in UsersList)
@@ -77,7 +83,7 @@ namespace Project
                     {
                         if (u.Email == email)
                         {
-                            //var user = new User(email, password, lastName, firstName);
+                           
 
                             u.Password = password;
                             u.FirstName = firstName;
@@ -104,9 +110,8 @@ namespace Project
             }
         }
     }
-        //
        
-        //
+       
 
 
     }
